@@ -105,13 +105,24 @@ namespace DALListContact
             return nbLigne;
         }
 
-        public static int DeleteFriend(int idUser, int idFriend)
+        public static int DeleteFriend(int idUser, int idFriend) {
+            
+            int ligne1, ligne2;
+            ligne1 = DeleteLineFriend(idUser, idFriend);
+            ligne2 = DeleteLineFriend(idFriend, idUser);
+           
+            return ligne1 +ligne2*2;
+
+        }
+
+        private static int DeleteLineFriend(int idUser, int idFriend)
         {
             int nbLigne = 0;
             List<SqlParameter> list = new List<SqlParameter>();
             list.Add(new SqlParameter("idUser", idUser));
             list.Add(new SqlParameter("idFriend", idFriend));
-            Connection.Delete(requettedeleteFriend, list);
+            nbLigne=Connection.Delete(requettedeleteFriend, list);
+            
             return nbLigne;
         }
 

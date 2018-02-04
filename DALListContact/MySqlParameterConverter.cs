@@ -30,11 +30,11 @@ namespace DALListContact
                 }
                 if (user.Login != null)
                 {
-                    myParamsSql.Add(new SqlParameter("login", user.Login));
+                    myParamsSql.Add(new SqlParameter("personnage", user.Login));
                 }
                 if (user.pwd != null)
                 {
-                    myParamsSql.Add(new SqlParameter("pwd", user.pwd));
+                    myParamsSql.Add(new SqlParameter("password", user.pwd));
                 }
                 if (user.MyAddress != null) {
                     myParamsSql.Add(new SqlParameter("idAddress", user.MyAddress.ID));

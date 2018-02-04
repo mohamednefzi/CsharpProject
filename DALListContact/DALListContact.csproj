@@ -40,11 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressServices.cs" />
+    <Compile Include="EntitiesConverter.cs" />
     <Compile Include="MySqlParameterConverter.cs" />
+    <Compile Include="PictureService.cs" />
     <Compile Include="UsersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\listeContact\DALConnection\DALConnection.csproj">
+      <Project>{28a50948-12f0-49c0-b774-aec59f5fdc4f}</Project>
+      <Name>DALConnection</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{EB68CB61-9C87-42F7-B332-CB02CBABF137}</Project>
       <Name>Entities</Name>

@@ -14,6 +14,7 @@ namespace DALListContact
     {
         static string requetteGetEventByIdRelation = @"select * from events where idReltion=@idRelation";
         static string requetteConfirmEvents = @"update events set isConfirmed=true where id=@id";
+        static string requetteDeleteEvents = @"delete from events where id=@id";
 
         public static List<Events> getEventsByIdRelation(int idUser, int idFriend)
         {
@@ -30,7 +31,24 @@ namespace DALListContact
             return eventsList;
         }
 
-    
+        public static int ConfirmEvents(int idEvent)
+        {
+            int nbLignes = -1;
+            List<SqlParameter> list = new List<SqlParameter>();
+            list.Add(new SqlParameter("id", idEvent));
+            nbLignes=  Connection.Update(requetteConfirmEvents, list);
+            return nbLignes;
+        }
+
+        public static int DeleteEvents(int idEvents)
+        {
+            int nbLignes = -1;
+            List<SqlParameter> list = new List<SqlParameter>();
+            list.Add(new SqlParameter("id", idEvents));
+            nbLignes = Connection.Delete(requetteConfirmEvents, list);
+            return nbLignes;
+        }
+        //test commit
 
     }
 }

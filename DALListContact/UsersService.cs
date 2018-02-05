@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DALConnection;
 using System.Data;
 
@@ -24,7 +21,7 @@ namespace DALListContact
         static string requetteGetAllFriend = @"select * from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=true";
         static string requetteGetAllFriendNotConfirmed = @"select * from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=false";
         static string requetteGetUsersNotFriend = @"select * from users where id NOT IN (select idFriend from usersContactList where idUser=@id) AND id NOT IN (select idUser from usersContactList where idFriend=@id)";
-        static string requetteGetUserRequestFriendRecieved = @"select * from users where id IN (select idFriend from usersContactList where idUser=@id and isFriend=false)";
+        static string requetteGetUserRequestFriendRecieved = @"select * from users where id IN (select idFriend from usersContactList where idFriend=@id and isFriend=false)";
         static string requetteGetIdRelation = @"select * from usersContactList where idUser=@idUser AND idFriend=@idFriend and isFriend=true";
         static string requetteSignIn = @"select * from users where personnage=@personnage and password=@password";
         static string VerifyLogin = @" select * from users where personnage=@personnage";
@@ -47,9 +44,10 @@ namespace DALListContact
             return idGenerated;
         }
 
-        public static int AddFriend(int idUser, int idFriend)
+
+        public static long AddFriend(int idUser, int idFriend)
         {
-            int idGenerated = -1;
+            long idGenerated = -1;
 
             if (GetCountUsersFriends(idUser) >= 5)
             {
@@ -67,7 +65,9 @@ namespace DALListContact
             return idGenerated;
         }
 
+
         private static int GetCountUsersFriends(int idUser)
+
         {
             List<SqlParameter> list = new List<SqlParameter>();
             int countFriends;
@@ -75,9 +75,10 @@ namespace DALListContact
             DataSet data = Connection.selectQuery(requetteCountFriend, list);
             DataTable table = data.Tables[0];
             DataRowCollection rows = table.Rows;
-            countFriends = Convert.ToInt32(rows[0]["id"]);
+            countFriends = Convert.ToInt32(rows[0]["count"]);
             return countFriends;
         }
+
 
         public static int ConfirmNewFriend(int idUser, int idFriend)
         {
@@ -88,6 +89,7 @@ namespace DALListContact
             }
             else
             {
+                idGenerated = 1;
                 AddFriend(idUser, idFriend);
                 Confirm(idUser, idFriend);
                 Confirm(idFriend, idUser);
@@ -95,6 +97,7 @@ namespace DALListContact
 
             return idGenerated;
         }
+
 
         private static int Confirm(int idUser, int idFriend)
         {
@@ -120,14 +123,12 @@ namespace DALListContact
         /// </returns>
         public static int DeleteFriend(int idUser, int idFriend)
         {
-
             int ligne1, ligne2;
             ligne1 = DeleteLineFriend(idUser, idFriend);
             ligne2 = DeleteLineFriend(idFriend, idUser);
-
             return ligne1 + ligne2 * 2;
-
         }
+
 
         private static int DeleteLineFriend(int idUser, int idFriend)
         {
@@ -136,9 +137,9 @@ namespace DALListContact
             list.Add(new SqlParameter("idUser", idUser));
             list.Add(new SqlParameter("idFriend", idFriend));
             nbLigne = Connection.Delete(requettedeleteFriend, list);
-
             return nbLigne;
         }
+
 
         public static int deleteUser(int idUser)
         {
@@ -152,6 +153,7 @@ namespace DALListContact
             return nbLigne;
         }
 
+
         private static int DeleteAllRelationUsers(int idUser, List<SqlParameter> list)
         {
             int nbLigne = 0;
@@ -160,6 +162,7 @@ namespace DALListContact
 
         }
 
+
         public static Users GetById(int idUser)
         {
             Users u = new Users { ID = idUser };
@@ -167,11 +170,19 @@ namespace DALListContact
             DataSet data = Connection.selectQuery(requetteGetById, list);
             DataTable table = data.Tables[0];
             DataRowCollection rows = table.Rows;
-            u = EntitiesConverter.ConvertFromDataRowToUser(rows[0]);
-            u.MyPicture = PictureService.getById(u.MyPicture.ID);
-            u.MyAddress = AddressServices.GetById(u.MyAddress.ID);
+            if (rows.Count > 0)
+            {
+                u = EntitiesConverter.ConvertFromDataRowToUser(rows[0]);
+                u.MyPicture = PictureService.getById(u.MyPicture.ID);
+                u.MyAddress = AddressServices.GetById(u.MyAddress.ID);
+            }
+            else
+            {
+                u = null;
+            }
             return u;
         }
+
 
         public static List<Users> getAll(int idUser)
         {
@@ -191,6 +202,7 @@ namespace DALListContact
             }
             return allUsers;
         }
+
 
         public static List<Users> getAllFriend(int idUser)
         {
@@ -224,6 +236,7 @@ namespace DALListContact
             return allUsers;
         }
 
+
         public static List<Users> getAllUserNotFriends(int idUser)
         {
             Users u = new Users { ID = idUser };
@@ -243,6 +256,7 @@ namespace DALListContact
             return allUsers;
         }
 
+
         internal static int GetIdRelation(int idUser, int idFriend)
         {
             int id = -1;
@@ -258,6 +272,7 @@ namespace DALListContact
             }
             return id;
         }
+
 
         public static Users SignIn(string login, string pwd)
         {
@@ -288,7 +303,7 @@ namespace DALListContact
             DataSet data = Connection.selectQuery(VerifyLogin, list);
             DataTable table = data.Tables[0];
             DataRowCollection rows = table.Rows;
-            if (rows != null)
+            if (rows.Count==1)
             {
                 exist = true;
 
@@ -296,6 +311,22 @@ namespace DALListContact
             return exist;
         }
 
+
+        public static List<Users> GetUserRequestFriendRecieved(int idUser)
+        {
+            Users u = new Users { ID = idUser };
+            List<SqlParameter> list = MySqlParameterConverter.ConvertFromUser(u);
+            List<Users> allUsers = new List<Users>();
+            DataSet data = Connection.selectQuery(requetteGetUserRequestFriendRecieved, list);
+            DataTable table = data.Tables[0];
+            DataRowCollection rows = table.Rows;
+            foreach (DataRow row in rows)
+            {
+                Users u1 = GetById(Convert.ToInt32(row["idFriend"]));
+                allUsers.Add(u1);
+            }
+            return allUsers;
+        }
 
     }
 

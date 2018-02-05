@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 
 namespace DALConnection
 {
-   public  class Connection
+    public class Connection
     {
-         private static string connStr = @"Data Source=VIEWW7-2016-60\SQLEXPRESS;Initial Catalog=DBExamenFinalCSharp;Integrated Security=True;Connect Timeout=30";
+        private static string connStr = @"Data Source=HATEM\SQLEXPRESS;
+                                                Initial Catalog=DBExamenFinalCSharp;
+                                                Integrated Security=True;
+                                                Connect Timeout=5";
 
 
         /// <summary>
@@ -19,9 +22,9 @@ namespace DALConnection
         /// <param name="requette"></param>
         /// <param name="listeParams"></param>
         /// <returns></returns>
-       public static int Insert(string requette, List<SqlParameter> listeParams)
+        public static long Insert(string requette, List<SqlParameter> listeParams)
         {
-            int idGenerated = -2;
+            long idGenerated = -2;
             using (SqlConnection conn = new SqlConnection(connectionString: connStr))
             {
                 conn.Open();
@@ -32,7 +35,7 @@ namespace DALConnection
                     {
                         cmd.Parameters.Add(param);
                     }
-                    idGenerated = Convert.ToInt32( cmd.ExecuteScalar());
+                    idGenerated = Convert.ToInt32(cmd.ExecuteScalar());
                     Console.WriteLine("auto-incremented id: {0}", idGenerated);
                 }
             }
@@ -45,7 +48,7 @@ namespace DALConnection
         /// </summary>
         /// <param name="requette"></param>
         /// <param name="listeParams"></param>
-      public  static int Update(string requette, List<SqlParameter> listeParams)
+        public static int Update(string requette, List<SqlParameter> listeParams)
         {
             int nbLignes = -1;
             using (SqlConnection conn = new SqlConnection(connectionString: connStr))
@@ -75,7 +78,7 @@ namespace DALConnection
         /// <param name="requette"></param>
         /// <param name="listeParams"></param>
         /// <returns></returns>
-      public  static int Delete(string requette, List<SqlParameter> listeParams)
+        public static int Delete(string requette, List<SqlParameter> listeParams)
         {
             int nbLignes = -1;
             using (SqlConnection conn = new SqlConnection(connectionString: connStr))
@@ -102,7 +105,7 @@ namespace DALConnection
         /// <param name="requette"></param>
         /// <param name="listeParams"></param>
         /// <returns></returns>
-       public static DataSet selectQuery(string requette, List<SqlParameter> listeParams)
+        public static DataSet selectQuery(string requette, List<SqlParameter> listeParams)
         {
             DataSet dataSet = new DataSet();
             using (SqlConnection conn = new SqlConnection(connStr))

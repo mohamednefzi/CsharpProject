@@ -48,6 +48,7 @@ namespace DALListContact
             nbLignes = Connection.Delete(requetteConfirmEvents, list);
             return nbLignes;
         }
+        //test commit
 
     }
 }

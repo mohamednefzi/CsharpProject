@@ -10,7 +10,7 @@ namespace DALListContact
 {
     class AddressServices
     {
-        static private string requetteInsert = @"insert into adress (number,street,city,province,country) output inserted.id values kd(@number,@street,@city,@province,@country)";
+        static private string requetteInsert = @"insert into adress (number,street,city,province,country) output inserted.id values (@number,@street,@city,@province,@country)";
         private static string requetteDelete = @"delete from adress where id =@id";
         private static string requetteGetById = @"select from adress where id=@id";
 

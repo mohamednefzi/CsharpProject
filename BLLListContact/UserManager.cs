@@ -14,6 +14,10 @@ namespace BLLListContact
             return UsersService.InsertUser(user);
         }
 
+        public static Users signIn(string login, string password)
+        {
+            return UsersService.SignIn(login, password);
+        }
 
 
     }

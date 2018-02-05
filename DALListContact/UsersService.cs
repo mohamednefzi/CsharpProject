@@ -9,7 +9,7 @@ namespace DALListContact
 {
     public class UsersService
     {
-        static string requetteInsert = @" insert into users (lastName,firstName,personnage,password) output inserted.id values (@firstName,@lastName,@personnage,@password,@idAddress,@idPicture)";
+        static string requetteInsert = @" insert into users (lastName,firstName,personnage,password,idAddress,idPicture) output inserted.id values (@firstName,@lastName,@personnage,@password,@idAddress,@idPicture)";
         static string requetteCountFriend = @"select count(*) as count from users where 'id'=@id";
         static string requetteAddFriend = @"insert into usersContactList (idUser,idFriend,isFriend) output inserted.id values (@idUser,@idFriend,@isFriend)";
         static string requetteUpdateFriend = @"update usersContactList set isFriend=@isFriend where idUser=@idUser and idFriend=@idFriend";
@@ -27,6 +27,7 @@ namespace DALListContact
         static string VerifyLogin = @" select * from users where personnage=@personnage";
 
         public static long InsertUser(Users users)
+
         {
             long idGenerated = -1;
             if (users != null)

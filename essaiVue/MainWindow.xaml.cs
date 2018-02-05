@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLLListContact;
+using Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,18 +31,31 @@ namespace essaiVue
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Contact contact = new Contact();
-            contact.Show();
-            this.Close();
-        }
-
         private void btn_inscription_Click(object sender, RoutedEventArgs e)
         {
             Register register = new Register();
             register.Show();
             this.Close();
+        }
+
+        private void login_Click(object sender, RoutedEventArgs e)
+        {
+            string userLogin = user_login.Text;
+            String password = user_password.Password;
+
+            Users user = UserManager.signIn(userLogin, password);
+
+            if (user != null)
+            {
+                Contact contact = new Contact();
+                contact.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("erreur de login");
+            }
+
         }
     }
 }

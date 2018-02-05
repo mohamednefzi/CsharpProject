@@ -14,9 +14,9 @@ namespace DALListContact
         private static string requetteDelete = @"delete from adress where id =@id";
         private static string requetteGetById = @"select from adress where id=@id";
 
-        internal static long Insert(Address address)
+        internal static int Insert(Address address)
         {
-            long idGenerated = -1;
+            int idGenerated = -1;
             if (address != null)
             {
                 List<SqlParameter> paramsList = MySqlParameterConverter.ConvertFromAdress(address);

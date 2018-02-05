@@ -1,0 +1,25 @@
+﻿<Window x:Class="essaiVue.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:essaiVue"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Window.Background>
+        <ImageBrush ImageSource="E:\hatem-pc\isi\P55-c#\Ws_C#\c-sharpe\essaiVue\Resources/DragonballSuper.jpg"/>
+    </Window.Background>
+    <Grid Name="btn_ADD">
+        <Rectangle Fill="#C8744462" HorizontalAlignment="Left" Height="325" Margin="72,85,0,0" VerticalAlignment="Top" Width="272" RadiusX="20" RadiusY="20"/>
+        <Rectangle Fill="#C8FFFFFF" HorizontalAlignment="Left" Height="570" Margin="388,0,0,0" RadiusY="20" RadiusX="20" VerticalAlignment="Top" Width="10"/>
+        <Rectangle Fill="#C8FFFFFF" HorizontalAlignment="Left" Height="570" Margin="404,0,0,0" RadiusY="20" RadiusX="20" VerticalAlignment="Top" Width="10"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="119,143,0,0" VerticalAlignment="Top" Width="115" FontFamily="Snap ITC" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="119,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154" Background="#FFF1D9D9"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="119,251,0,0" VerticalAlignment="Top" Width="115" FontFamily="Snap ITC" FontSize="18"/>
+        <PasswordBox HorizontalAlignment="Left" Margin="119,303,0,0" VerticalAlignment="Top" Width="154" Height="21"/>
+        <Button Content="Log In" HorizontalAlignment="Left" Margin="119,360,0,0" VerticalAlignment="Top" Height="35" Width="157" FontSize="20" FontFamily="Stencil" Foreground="#FF5C5555" Click="Button_Click"/>
+        <Rectangle Fill="#C84E52A3" HorizontalAlignment="Left" Height="325" Margin="468,85,0,0" VerticalAlignment="Top" Width="272" RadiusX="20" RadiusY="20"/>
+        <Label Content="votre message a &#xD;&#xA;inserer" HorizontalAlignment="Left" Margin="510,196,0,0" VerticalAlignment="Top" Width="207" FontFamily="Snap ITC" FontSize="18" Height="128"/>
+        <Button Name="btn_inscription" Content="Sign Up" HorizontalAlignment="Left" Margin="520,360,0,0" VerticalAlignment="Top" Height="35" Width="157" FontSize="20" FontFamily="Stencil" Foreground="#FF5C5555" Click="btn_inscription_Click"/>
+    </Grid>
+</Window>

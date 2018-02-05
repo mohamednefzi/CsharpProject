@@ -49,7 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\listeContact\DALConnection\DALConnection.csproj">
+    <ProjectReference Include="..\DALConnection\DALConnection.csproj">
       <Project>{28a50948-12f0-49c0-b774-aec59f5fdc4f}</Project>
       <Name>DALConnection</Name>
     </ProjectReference>

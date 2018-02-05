@@ -14,6 +14,7 @@ namespace DALListContact
     {
         static string requetteGetEventByIdRelation = @"select * from events where idReltion=@idRelation";
         static string requetteConfirmEvents = @"update events set isConfirmed=true where id=@id";
+
         public static List<Events> getEventsByIdRelation(int idUser, int idFriend)
         {
             List<Events> eventsList = new List<Events>();

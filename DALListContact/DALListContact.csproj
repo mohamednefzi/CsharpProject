@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AddressServices.cs" />
     <Compile Include="EntitiesConverter.cs" />
+    <Compile Include="EventServices.cs" />
     <Compile Include="MySqlParameterConverter.cs" />
     <Compile Include="PictureService.cs" />
     <Compile Include="UsersService.cs" />

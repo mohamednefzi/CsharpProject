@@ -11,7 +11,7 @@ namespace Entities
         public int ID { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
-        public Users FriendUsers { get; set; }
-        public bool IsConfirmed { get; set; }
+        public int IdRelation { get; set; }
+        public bool? IsConfirmed { get; set; }
     }
 }

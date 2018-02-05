@@ -25,7 +25,9 @@ namespace DALListContact
         static string requetteGetAllFriendNotConfirmed = @"select * from  users as U inner join usersContactList as UCL on U.id= UCL.idUser where U.id=@id AND UCL.isFriend=false";
         static string requetteGetUsersNotFriend = @"select * from users where id NOT IN (select idFriend from usersContactList where idUser=@id) AND id NOT IN (select idUser from usersContactList where idFriend=@id)";
         static string requetteGetUserRequestFriendRecieved = @"select * from users where id IN (select idFriend from usersContactList where idUser=@id and isFriend=false)";
-
+        static string requetteGetIdRelation = @"select * from usersContactList where idUser=@idUser AND idFriend=@idFriend and isFriend=true";
+        static string requetteSignIn = @"select * from users where personnage=@personnage and password=@password";
+        static string VerifyLogin = @" select * from users where personnage=@personnage";
 
         public static int InsertUser(Users users)
         {
@@ -105,13 +107,25 @@ namespace DALListContact
             return nbLigne;
         }
 
-        public static int DeleteFriend(int idUser, int idFriend) {
-            
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="idUser"></param>
+        /// <param name="idFriend"></param>
+        /// <returns>
+        /// retour =0 aucune relation d'amitié
+        /// retour =1 vous avez annulé votre demande d'amis
+        /// retour =2 vous avez refusé la demande d'amis
+        /// rtour =3 relation d'amitié annulé
+        /// </returns>
+        public static int DeleteFriend(int idUser, int idFriend)
+        {
+
             int ligne1, ligne2;
             ligne1 = DeleteLineFriend(idUser, idFriend);
             ligne2 = DeleteLineFriend(idFriend, idUser);
-           
-            return ligne1 +ligne2*2;
+
+            return ligne1 + ligne2 * 2;
 
         }
 
@@ -121,8 +135,8 @@ namespace DALListContact
             List<SqlParameter> list = new List<SqlParameter>();
             list.Add(new SqlParameter("idUser", idUser));
             list.Add(new SqlParameter("idFriend", idFriend));
-            nbLigne=Connection.Delete(requettedeleteFriend, list);
-            
+            nbLigne = Connection.Delete(requettedeleteFriend, list);
+
             return nbLigne;
         }
 
@@ -229,6 +243,58 @@ namespace DALListContact
             return allUsers;
         }
 
+        internal static int GetIdRelation(int idUser, int idFriend)
+        {
+            int id = -1;
+            List<SqlParameter> list = new List<SqlParameter>();
+            list.Add(new SqlParameter("idUser", idUser));
+            list.Add(new SqlParameter("idFriend", idFriend));
+            DataSet data = Connection.selectQuery(requetteGetIdRelation, list);
+            DataTable table = data.Tables[0];
+            DataRowCollection rows = table.Rows;
+            if (rows != null)
+            {
+                id = Convert.ToInt32(rows[0]["id"]);
+            }
+            return id;
+        }
+
+        public static Users SignIn(string login, string pwd)
+        {
+            Users u = new Users { Login = login, pwd = pwd };
+            List<SqlParameter> list = MySqlParameterConverter.ConvertFromUser(u);
+            DataSet data = Connection.selectQuery(requetteSignIn, list);
+            DataTable table = data.Tables[0];
+            DataRowCollection rows = table.Rows;
+            if (rows != null)
+            {
+                u = GetById(Convert.ToInt32(rows[0]["id"]));
+            }
+            else
+            {
+                u = null;
+            }
+
+
+            return u;
+        }
+
+
+        public static bool VerifyUser(string login)
+        {
+            bool exist = false;
+            Users u = new Users { Login = login };
+            List<SqlParameter> list = MySqlParameterConverter.ConvertFromUser(u);
+            DataSet data = Connection.selectQuery(VerifyLogin, list);
+            DataTable table = data.Tables[0];
+            DataRowCollection rows = table.Rows;
+            if (rows != null)
+            {
+                exist = true;
+
+            }
+            return exist;
+        }
 
 
     }

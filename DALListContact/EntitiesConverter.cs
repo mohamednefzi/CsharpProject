@@ -86,5 +86,34 @@ namespace DALListContact
 
             return adr;
         }
+
+        internal static Events ConvertFromDataRowToEvents(DataRow dataRow)
+        {
+            Events e =null;
+            if (dataRow != null)
+            {
+                e = new Events();
+                e.ID=Convert.ToInt32(dataRow["id"]);
+                e.IdRelation = Convert.ToInt32(dataRow["idRelation"]);
+                if (dataRow["description"] != DBNull.Value)
+                {
+                    e.Description = Convert.ToString(dataRow["description"]);
+                }
+                if (dataRow["isConfirmed"] != DBNull.Value)
+                {
+                    e.IsConfirmed = Convert.ToBoolean(dataRow["isConfirmed"]);
+                }else
+                {
+                    e.IsConfirmed = null;
+                }
+                if(dataRow["date"] != DBNull.Value)
+                {
+                    e.Date = Convert.ToDateTime(dataRow["date"]);
+                }
+            }
+
+            return e;
+        }
+
     }
 }

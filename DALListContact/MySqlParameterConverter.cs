@@ -16,7 +16,7 @@ namespace DALListContact
 
             if (user != null)
             {
-                if (user.ID is Nullable && user.ID != null || user.ID != 0)
+                if ( user.ID != 0)
                 {
                     myParamsSql.Add(new SqlParameter("id", user.ID));
                 }
@@ -54,11 +54,11 @@ namespace DALListContact
             List<SqlParameter> myParamsSql = new List<SqlParameter>();
             if (address != null)
             {
-                if (address.ID is Nullable && address.ID != null || address.ID != 0)
+                if (address.ID != 0)
                 {
                     myParamsSql.Add(new SqlParameter("id", address.ID));
                 }
-                if (address.Number is Nullable && address.Number != null || address.Number != 0)
+                if (address.Number != 0)
                 {
                     myParamsSql.Add(new SqlParameter("number", address.Number));
                 }
@@ -87,7 +87,7 @@ namespace DALListContact
         {
 
             List<SqlParameter> myParamsSql = new List<SqlParameter>();
-            if (pic.ID is Nullable && pic.ID != null || pic.ID != 0)
+            if (pic.ID != 0)
             {
                 myParamsSql.Add(new SqlParameter("id", pic.ID));
             }
@@ -103,9 +103,13 @@ namespace DALListContact
         {
             List<SqlParameter> myParamsSql = new List<SqlParameter>();
 
-            if (events.ID is Nullable && events.ID != null || events.ID != 0)
+            if ( events.ID != 0)
             {
                 myParamsSql.Add(new SqlParameter("id", events.ID));
+            }
+            if ( events.IdRelation != 0)
+            {
+                myParamsSql.Add(new SqlParameter("IdRelation", events.IdRelation));
             }
             if (events.Description != null)
             {
@@ -115,7 +119,7 @@ namespace DALListContact
             {
                 myParamsSql.Add(new SqlParameter("date", events.Date));
             }
-            if (events.IsConfirmed is Nullable && events.IsConfirmed != null)
+            if (events.IsConfirmed != null)
             {
                 myParamsSql.Add(new SqlParameter("isConfirmed", events.IsConfirmed)); k
             }

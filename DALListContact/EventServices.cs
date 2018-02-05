@@ -23,14 +23,14 @@ namespace DALListContact
             DataSet data = Connection.selectQuery(requetteGetEventByIdRelation, list);
             DataTable table = data.Tables[0];
             DataRowCollection rows = table.Rows;
-            foreach(DataRow row in rows)
+            foreach (DataRow row in rows)
             {
                 eventsList.Add(EntitiesConverter.ConvertFromDataRowToEvents(row));
             }
             return eventsList;
         }
 
-        public static 
+    
 
     }
 }

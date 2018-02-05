@@ -121,7 +121,7 @@ namespace DALListContact
             }
             if (events.IsConfirmed != null)
             {
-                myParamsSql.Add(new SqlParameter("isConfirmed", events.IsConfirmed)); k
+                myParamsSql.Add(new SqlParameter("isConfirmed", events.IsConfirmed));
             }
 
             return myParamsSql;

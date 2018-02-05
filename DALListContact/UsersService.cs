@@ -29,9 +29,9 @@ namespace DALListContact
         static string requetteSignIn = @"select * from users where personnage=@personnage and password=@password";
         static string VerifyLogin = @" select * from users where personnage=@personnage";
 
-        public static int InsertUser(Users users)
+        public static long InsertUser(Users users)
         {
-            int idGenerated = -1;
+            long idGenerated = -1;
             if (users != null)
             {
                 if (users.MyAddress != null)

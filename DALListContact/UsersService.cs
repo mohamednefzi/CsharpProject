@@ -12,17 +12,17 @@ namespace DALListContact
 {
     public class UsersService
     {
-        static string requetteInsert = @" insert into users ('lastName','firstName','personnage','password') output inserted.id (@firstName,@lastName,@personnage,@password,@idAddress,@idPicture)";
+        static string requetteInsert = @" insert into users (lastName,firstName,personnage,password) output inserted.id values (@firstName,@lastName,@personnage,@password,@idAddress,@idPicture)";
         static string requetteCountFriend = @"select count(*) as count from users where 'id'=@id";
-        static string requetteAddFriend = @"insert into usersContactList ('idUser','idFriend','isFriend') output inserted.id (@idUser,@idFriend,@isFriend)";
+        static string requetteAddFriend = @"insert into usersContactList (idUser,idFriend,isFriend) output inserted.id values (@idUser,@idFriend,@isFriend)";
         static string requetteUpdateFriend = @"update usersContactList set isFriend=@isFriend where idUser=@idUser and idFriend=@idFriend";
-        static string requettedeleteFriend = @" delete from usersContactList where idUser IN (@idUser,@idFriend) and idFriend IN (@idUser,@idFriend)";
+        static string requettedeleteFriend = @"delete from usersContactList where idUser IN (@idUser,@idFriend) and idFriend IN (@idUser,@idFriend)";
         static string requetteDeleteAllRelationUsers = @"delete from usersContactList where idUser =@idUser or idFriend=@idUser";
-        static string requetteGetById = @" select * from users where id=@id";
+        static string requetteGetById = @"select * from users where id=@id";
         static string requetteDeleteUser = @"delete from users where id=@id";
         static string requetteGetAllUsers = @" select * from users where id!=@id";
-        static string requetteGetAllFriend = @"select * from  users as U inner join usersContactList as UCL on U.id= UCL.idUser where U.id=@id AND UCL.isFriend=true";
-        static string requetteGetAllFriendNotConfirmed = @"select * from  users as U inner join usersContactList as UCL on U.id= UCL.idUser where U.id=@id AND UCL.isFriend=false";
+        static string requetteGetAllFriend = @"select * from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=true";
+        static string requetteGetAllFriendNotConfirmed = @"select * from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=false";
         static string requetteGetUsersNotFriend = @"select * from users where id NOT IN (select idFriend from usersContactList where idUser=@id) AND id NOT IN (select idUser from usersContactList where idFriend=@id)";
         static string requetteGetUserRequestFriendRecieved = @"select * from users where id IN (select idFriend from usersContactList where idUser=@id and isFriend=false)";
         static string requetteGetIdRelation = @"select * from usersContactList where idUser=@idUser AND idFriend=@idFriend and isFriend=true";
@@ -280,7 +280,7 @@ namespace DALListContact
         }
 
 
-        public static bool VerifyUser(string login)
+        public static bool VerifyUserName(string login)
         {
             bool exist = false;
             Users u = new Users { Login = login };

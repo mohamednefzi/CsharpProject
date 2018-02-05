@@ -10,7 +10,7 @@ namespace DALConnection
 {
    public  class Connection
     {
-        private static string connStr = @"Data Source=VIEWW7-2016-60\SQLEXPRESS;Initial Catalog=MyTest;Integrated Security=True;Connect Timeout=30";
+         private static string connStr = @"Data Source=VIEWW7-2016-60\SQLEXPRESS;Initial Catalog=DBExamenFinalCSharp;Integrated Security=True;Connect Timeout=30";
 
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace DALConnection
                     {
                         cmd.Parameters.Add(param);
                     }
-                    idGenerated = (int)cmd.ExecuteScalar();
+                    idGenerated = Convert.ToInt32( cmd.ExecuteScalar());
                     Console.WriteLine("auto-incremented id: {0}", idGenerated);
                 }
             }

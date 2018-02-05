@@ -37,6 +37,7 @@ namespace DALListContact
                     idGenerated = AddressServices.Insert(users.MyAddress);
                     if (idGenerated != -1)
                     {
+                        users.MyAddress.ID = idGenerated;
                         List<SqlParameter> paramsList = MySqlParameterConverter.ConvertFromUser(users);
                         idGenerated = Connection.Insert(requetteInsert, paramsList);
                     }
@@ -197,8 +198,8 @@ namespace DALListContact
             {
                 Users u1 = new Users();
                 u1 = EntitiesConverter.ConvertFromDataRowToUser(row);
-                u1.MyPicture = PictureService.getById(u.MyPicture.ID);
-                u1.MyAddress = AddressServices.GetById(u.MyAddress.ID);
+                u1.MyPicture = PictureService.getById(u1.MyPicture.ID);
+                u1.MyAddress = AddressServices.GetById(u1.MyAddress.ID);
                 allUsers.Add(u1);
             }
             return allUsers;

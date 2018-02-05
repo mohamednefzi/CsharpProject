@@ -8,6 +8,11 @@ namespace Entities
 {
     public class Users
     {
+        public Users()
+        {
+            MyPicture = new Picture();
+            MyAddress = new Address();
+        }
         public int ID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }

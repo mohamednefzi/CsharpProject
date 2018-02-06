@@ -22,15 +22,15 @@ namespace DALListContact
                 }
                 if (dataRow["lastName"] != DBNull.Value)
                 {
-                    u.FirstName = Convert.ToString(dataRow["lastName"]);
+                    u.LastName = Convert.ToString(dataRow["lastName"]);
                 }
                 if (dataRow["personnage"] != DBNull.Value)
                 {
-                    u.FirstName = Convert.ToString(dataRow["personnage"]);
+                    u.Login = Convert.ToString(dataRow["personnage"]);
                 }
                 if (dataRow["password"] != DBNull.Value)
                 {
-                    u.FirstName = Convert.ToString(dataRow["password"]);
+                    u.pwd = Convert.ToString(dataRow["password"]);
                 }
                 if (dataRow["idAddress"] != DBNull.Value)
                 {

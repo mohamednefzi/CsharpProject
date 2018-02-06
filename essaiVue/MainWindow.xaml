@@ -19,7 +19,7 @@
         <PasswordBox Name="user_password" HorizontalAlignment="Left" Margin="119,303,0,0" VerticalAlignment="Top" Width="154" Height="21"/>
         <Button Name="login" Content="Log In" HorizontalAlignment="Left" Margin="119,360,0,0" VerticalAlignment="Top" Height="35" Width="157" FontSize="20" FontFamily="Stencil" Foreground="#FF5C5555" Click="login_Click"/>
         <Rectangle Fill="#C84E52A3" HorizontalAlignment="Left" Height="325" Margin="468,85,0,0" VerticalAlignment="Top" Width="272" RadiusX="20" RadiusY="20"/>
-        <Label Content="votre message a &#xD;&#xA;inserer" HorizontalAlignment="Left" Margin="510,196,0,0" VerticalAlignment="Top" Width="207" FontFamily="Snap ITC" FontSize="18" Height="128"/>
+        <Label Content="&#xD;&#xA;&#xD;&#xA;Inscrivez - vous " HorizontalAlignment="Left" Margin="510,196,0,0" VerticalAlignment="Top" Width="207" FontFamily="Snap ITC" FontSize="20" Height="128"/>
         <Button Name="btn_inscription" Content="Sign Up" HorizontalAlignment="Left" Margin="520,360,0,0" VerticalAlignment="Top" Height="35" Width="157" FontSize="20" FontFamily="Stencil" Foreground="#FF5C5555" Click="btn_inscription_Click"/>
     </Grid>
 </Window>

@@ -17,7 +17,7 @@ namespace DALListContact
         static string requetteDeleteEvents = @"delete from events where id=@id";
         static string requetteInsertEvents = @"insert into events (description,idRelation,date) output inserted.id values(@description,@idRelation,@date)";
         static string requetteDeleteByIdUser = @"delete from events where idRelation=@id";
-        
+
         public static List<Events> getEventsByIdRelation(int idUser, int idFriend)
         {
             List<Events> eventsList = new List<Events>();

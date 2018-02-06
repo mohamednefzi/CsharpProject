@@ -62,7 +62,8 @@ namespace essaiVue
 
             Picture picture = new Picture();
             picture.Src = photo_user.Source.ToString();
-            picture.ID = 1;
+            Console.WriteLine(picture.Src);
+
 
             Users user = new Users();
             user.FirstName = firstName;

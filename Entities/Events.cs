@@ -13,5 +13,6 @@ namespace Entities
         public DateTime Date { get; set; }
         public int IdRelation { get; set; }
         public bool? IsConfirmed { get; set; }
+        public String Type { get; set; }
     }
 }

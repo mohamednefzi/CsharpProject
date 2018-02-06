@@ -41,10 +41,20 @@ namespace essaiVue
             else
             {
                 confimation_friend.IsEnabled = false;
-                List<Events> listeEvenement = EventsManager.GetAllFriendsEvents(CurrentUser.ID, friend.ID);
+
+
+
                 listVeiewEvent.Items.Clear();
+                List<Events> listeEvenement = EventsManager.GetAllFriendsEvents(CurrentUser.ID, friend.ID);
                 foreach (Events evt in listeEvenement)
                 {
+                    evt.Type = "envoyé";
+                    listVeiewEvent.Items.Add(evt);
+                }
+                listeEvenement = EventsManager.GetAllFriendsEvents(friend.ID, CurrentUser.ID);
+                foreach (Events evt in listeEvenement)
+                {
+                    evt.Type = "Récu";
                     listVeiewEvent.Items.Add(evt);
                 }
             }
@@ -63,18 +73,35 @@ namespace essaiVue
             UserManager.ConfirmNewFriend(CurrentUser.ID, friend.ID);
         }
 
+
+
         private void add_event_Click(object sender, RoutedEventArgs e)
         {
             int idEventGenerated = EventsManager.AddEvent(CurrentUser.ID, friend.ID, "premiere Combat");
             EventsManager.ConfirmEvents(idEventGenerated);
 
-            List<Events> listeEvenement = EventsManager.GetAllFriendsEvents(CurrentUser.ID, friend.ID);
             listVeiewEvent.Items.Clear();
+            List<Events> listeEvenement = EventsManager.GetAllFriendsEvents(CurrentUser.ID, friend.ID);
             foreach (Events evt in listeEvenement)
             {
+                evt.Type = "envoyé";
                 listVeiewEvent.Items.Add(evt);
             }
+            listeEvenement = EventsManager.GetAllFriendsEvents(friend.ID, CurrentUser.ID);
+            foreach (Events evt in listeEvenement)
+            {
+                evt.Type = "Récu";
+                listVeiewEvent.Items.Add(evt);
+            }
+
+
+
+
+
+
         }
+
+
 
         private void delete_event_Click(object sender, RoutedEventArgs e)
         {

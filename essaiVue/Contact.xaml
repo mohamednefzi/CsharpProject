@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Contact" Height="600" Width="800">
     <Grid>
-        <Image Name="photo_user" HorizontalAlignment="Left" Height="164" Margin="30,25,0,0" VerticalAlignment="Top" Width="172"/>
+        <Image Name="photo_user" HorizontalAlignment="Left" Height="166" Margin="26,25,0,0" VerticalAlignment="Top" Width="176"/>
         <ListView x:Name="listViewFriend" HorizontalAlignment="Left" Height="209" Margin="10,244,0,0" VerticalAlignment="Top" Width="350">
             <ListView.View>
                 <GridView>
@@ -21,7 +21,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Height="40" Source="{Binding MyPicture.Src}"/>
+                                    <Image Height="60" Width="60" Source="{Binding MyPicture.Src}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -45,7 +45,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Height="40" Source="{Binding MyPicture.Src}"/>
+                                    <Image Height="60" Source="{Binding MyPicture.Src}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>

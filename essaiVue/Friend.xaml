@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Friend" Height="521.6" Width="713.6">
     <Grid Margin="0,0,17.2,1">
-        <Image Name="friend_image" HorizontalAlignment="Left" Height="138" Margin="62,49,0,0" VerticalAlignment="Top" Width="140"/>
+        <Image Name="friend_image" HorizontalAlignment="Left" Height="165" Margin="51,38,0,0" VerticalAlignment="Top" Width="171"/>
         <Label Name="firstName_friend" Content="first name" HorizontalAlignment="Left" Margin="236,67,0,0" VerticalAlignment="Top" Width="88" Height="25"/>
         <Label Name="LastName_friend" Content="last name" HorizontalAlignment="Left" Margin="236,133,0,0" VerticalAlignment="Top" Width="88" Height="27"/>
         <Label Name="Number_friend" Content="Number" HorizontalAlignment="Left" Margin="388,67,0,0" VerticalAlignment="Top" Width="90" Height="25"/>
@@ -22,7 +22,8 @@
                     </GridView.ColumnHeaderContextMenu>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding ID}" />
                     <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding Date}"/>
-                    <GridViewColumn Header="Description" Width="330" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="Description" Width="250" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="État" Width="80" DisplayMemberBinding="{Binding Type}"/>
                 </GridView>
             </ListView.View>
         </ListView>

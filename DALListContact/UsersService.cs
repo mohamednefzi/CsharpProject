@@ -26,7 +26,7 @@ namespace DALListContact
         static string requetteSignIn = @"select * from users where personnage=@personnage and password=@password";
         static string VerifyLogin = @"select * from users where personnage=@personnage";
         static string UpdateUser = @"update users set password=@password where id=@id";
-
+        static string requetteGetIdRelationByIdUser = @"select * from usersContactList where idUser=@id or idFriend=@id";
         //ok
         public static int InsertUser(Users users)
 
@@ -139,6 +139,7 @@ namespace DALListContact
         {
             int nbLigne = 0;
             List<SqlParameter> list = new List<SqlParameter>();
+            EventServices.DeleteByIdRelation(idUser, idFriend);
             list.Add(new SqlParameter("idUser", idUser));
             list.Add(new SqlParameter("idFriend", idFriend));
             nbLigne = Connection.Delete(requettedeleteFriend, list);
@@ -153,6 +154,7 @@ namespace DALListContact
             List<SqlParameter> list1 = new List<SqlParameter>();
             list.Add(new SqlParameter("idUser", idUser));
             list1.Add(new SqlParameter("id", idUser));
+            EventServices.DeleteByIdUser(idUser);
             DeleteAllRelationUsers(idUser, list);
             int idAddress = GetById(idUser).MyAddress.ID;
             Connection.Delete(requetteDeleteUser, list1);
@@ -165,6 +167,7 @@ namespace DALListContact
         private static int DeleteAllRelationUsers(int idUser, List<SqlParameter> list)
         {
             int nbLigne = 0;
+            
             nbLigne = Connection.Delete(requetteDeleteAllRelationUsers, list);
             return nbLigne;
 
@@ -348,6 +351,22 @@ namespace DALListContact
             return nbLigne;
         }
 
+
+        internal static List<int> GetIdRelationByIdUser(int idUser)
+        {
+            List<int> listRetour = new List<int>();
+            List<SqlParameter> list = new List<SqlParameter>();
+            list.Add(new SqlParameter("id", idUser));
+           
+            DataSet data = Connection.selectQuery(requetteGetIdRelationByIdUser, list);
+            DataTable table = data.Tables[0];
+            DataRowCollection rows = table.Rows;
+            foreach (DataRow row in rows)
+            {
+                listRetour.Add( Convert.ToInt32(row["id"]));
+            }
+            return listRetour;
+        }
 
     }
 

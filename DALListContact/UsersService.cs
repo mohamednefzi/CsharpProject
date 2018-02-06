@@ -21,7 +21,7 @@ namespace DALListContact
         static string requetteGetAllFriend = @"select * from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=1";
         static string requetteGetAllFriendNotConfirmed = @"select * from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=0";
         static string requetteGetUsersNotFriend = @"select * from users where id NOT IN (select idFriend from usersContactList where idUser=@id) AND id NOT IN (select idUser from usersContactList where idFriend=@id)";
-        static string requetteGetUserRequestFriendRecieved = @"select * from users where id IN (select idFriend from usersContactList where idFriend=@id and isFriend=false)";
+        static string requetteGetUserRequestFriendRecieved = @"select * from users where id IN (select idFriend from usersContactList where idFriend=@id and isFriend=0)";
         static string requetteGetIdRelation = @"select * from usersContactList where idUser=@idUser AND idFriend=@idFriend and isFriend=true";
         static string requetteSignIn = @"select * from users where personnage=@personnage and password=@password";
         static string VerifyLogin = @" select * from users where personnage=@personnage";
@@ -245,7 +245,7 @@ namespace DALListContact
             return allUsers;
         }
 
-
+        //ok
         public static List<Users> getAllUserNotFriends(int idUser)
         {
             Users u = new Users { ID = idUser };
@@ -265,7 +265,7 @@ namespace DALListContact
             return allUsers;
         }
 
-
+        
         internal static int GetIdRelation(int idUser, int idFriend)
         {
             int id = -1;
@@ -321,7 +321,7 @@ namespace DALListContact
             return exist;
         }
 
-
+        //
         public static List<Users> GetUserRequestFriendRecieved(int idUser)
         {
             Users u = new Users { ID = idUser };
@@ -332,7 +332,7 @@ namespace DALListContact
             DataRowCollection rows = table.Rows;
             foreach (DataRow row in rows)
             {
-                Users u1 = GetById(Convert.ToInt32(row["idFriend"]));
+                Users u1 = GetById(Convert.ToInt32(row["id"]));
                 allUsers.Add(u1);
             }
             return allUsers;

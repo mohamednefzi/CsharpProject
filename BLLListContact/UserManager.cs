@@ -76,5 +76,15 @@ namespace BLLListContact
         {
             return UsersService.ConfirmNewFriend(idUser, idFriend);
         }
+
+        public static int GetIdRelation(int idUser, int idFriend)
+        {
+            return UsersService.GetIdRelation(idUser, idFriend);
+        }
+
+        public static int UpdateUser(Users users)
+        {
+            return UsersService.Update(users);
+        }
     }
 }

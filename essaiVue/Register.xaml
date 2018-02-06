@@ -24,6 +24,7 @@
         </Image>
         <Button Name="btnLoadPhoto" Content="Upload photo" HorizontalAlignment="Left" Margin="346,271,0,0" VerticalAlignment="Top" Width="100" Height="37" Click="btnLoadPhoto_Click"/>
         <PasswordBox Name="password_user" HorizontalAlignment="Left" Margin="81,240,0,0" VerticalAlignment="Top" Width="171" Height="28"/>
+        <Button Name="update_User" Content="Update" HorizontalAlignment="Left" Margin="544,436,0,0" VerticalAlignment="Top" Width="115" Height="22" Click="update_User_Click"/>
     </Grid>
 
 </Window>

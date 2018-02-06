@@ -25,12 +25,22 @@ namespace essaiVue
         public Register()
         {
             InitializeComponent();
+            update_User.IsEnabled = false;
         }
 
         public Register(Users user)
         {
             this.users = user;
             InitializeComponent();
+            register.IsEnabled = false;
+
+            lastName_user.Text = user.LastName;
+            fistName_user.Text = user.FirstName;
+            login_user.Text = user.Login;
+            phone_user.Text = user.MyAddress.Number.ToString();
+            adrress.Text = user.MyAddress.Street + user.MyAddress.City;
+            province_user.Text = user.MyAddress.Country;
+
         }
 
         private void register_Click(object sender, RoutedEventArgs e)
@@ -91,6 +101,42 @@ namespace essaiVue
                 photo_user.Source = new BitmapImage(new Uri(op.FileName));  //ajoute le chemin de l'image
                 //string photoPath = photo_user.Source.ToString();
             }
+        }
+
+        private void update_User_Click(object sender, RoutedEventArgs e)
+        {
+            String lastName = lastName_user.Text;
+            String firstName = fistName_user.Text;
+            String login = login_user.Text;
+            String password = password_user.Password;
+            String streetAndCity = adrress.Text;
+            int phone = int.Parse(phone_user.Text);
+            String country = province_user.Text;
+
+
+            users.MyAddress.Number = phone;
+            users.MyAddress.Province = "";
+            users.MyAddress.Country = country;
+            users.MyAddress.Street = streetAndCity;
+            users.MyAddress.City = "";
+
+
+            users.MyPicture.Src = photo_user.Source.ToString();
+            users.MyPicture.ID = 1;
+
+
+            users.FirstName = firstName;
+            users.LastName = lastName;
+            users.Login = login;
+            users.pwd = password;
+
+            UserManager.UpdateUser(users);
+            MessageBox.Show("User bien mis a jour..");
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+
+
         }
     }
 

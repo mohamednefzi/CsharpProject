@@ -37,7 +37,7 @@
         <TextBox HorizontalAlignment="Left" Height="37" Margin="645,11,0,0" TextWrapping="Wrap" Text="Recherche Par nom" VerticalAlignment="Top" Width="122"/>
         <Button Name="NotConfirmedFriend" Content="Not Confirmed" RenderTransformOrigin="0.261,0.552" Margin="128,491,565.6,46.4" Click="NotConfirmedFriend_Click"/>
         <Label Name="name_user" Content="Nom" HorizontalAlignment="Left" Margin="222,30,0,0" VerticalAlignment="Top" Height="30" Width="116"/>
-        <Button Content="Modifier" HorizontalAlignment="Left" Margin="222,80,0,0" VerticalAlignment="Top" Width="95" Height="35"/>
+        <Button Name="modifier_user" Content="Modifier" HorizontalAlignment="Left" Margin="222,80,0,0" VerticalAlignment="Top" Width="95" Height="35" Click="modifier_user_Click"/>
         <Button Name="delete_contact" Content="Delete User" HorizontalAlignment="Left" Margin="222,135,0,0" VerticalAlignment="Top" Width="95" Height="35" Click="delete_contact_Click"/>
         <Button Name="UserNotFriend" Content="User Not Friend" HorizontalAlignment="Left" Margin="417,13,0,0" VerticalAlignment="Top" Width="95" Height="35" Click="UserNotFriend_Click"/>
         <Button Name="AddUserToFriend" Content="Add to Friend" HorizontalAlignment="Left" Margin="556,501,0,0" VerticalAlignment="Top" Width="95" Height="35" Click="AddUserToFriend_Click"/>

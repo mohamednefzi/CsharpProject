@@ -146,5 +146,12 @@ namespace essaiVue
 
 
         }
+
+        private void modifier_user_Click(object sender, RoutedEventArgs e)
+        {
+            Register register = new Register(userConnecte);
+            register.Show();
+            this.Close();
+        }
     }
 }

@@ -34,7 +34,14 @@ namespace essaiVue
             Number_friend.Content = friend.MyAddress.Number;
             Adress_friend.Content = friend.MyAddress.Street + friend.MyAddress.City + friend.MyAddress.Country;
 
-            //confimation_friend.IsEnabled = false;
+            if (UserManager.GetIdRelation(CurrentUser.ID, friend.ID) == -1)
+            {
+                confimation_friend.IsEnabled = true;
+            }
+            else
+            {
+                confimation_friend.IsEnabled = false;
+            }
         }
 
 

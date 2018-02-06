@@ -27,14 +27,15 @@ namespace ConsoleApplication1
             // List<Users> us = UsersService.getAllFriend(8);
             // List<Users> us = UsersService.getAllFriendNotConfirmed(8);
             //List<Users> us = UsersService.getAllUserNotFriends(8);
-             List<Users> us = UsersService.GetUserRequestFriendRecieved(8);
+             /*List<Users> us = UsersService.GetUserRequestFriendRecieved(8);
              foreach (Users b  in us)
              {
                  Console.WriteLine(b.ID + b.LastName);
              }
+             */
 
             //UsersService.Update(u);
-           // EventServices.Insert(2, 8, "nouvelle description");
+            EventServices.Insert(2, 8, "nouvelle description");
 
         }
     }

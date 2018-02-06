@@ -19,7 +19,7 @@ namespace DALListContact
         static string requetteDeleteUser = @"delete from users where id=@id";
         static string requetteGetAllUsers = @" select * from users where id!=@id";
         static string requetteGetAllFriend = @"select * from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=1";
-        static string requetteGetAllFriendNotConfirmed = @"select * from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=0";
+        static string requetteGetAllFriendNotConfirmed = @"select U.id as id from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=0";
         static string requetteGetUsersNotFriend = @"select * from users where id NOT IN (select idFriend from usersContactList where idUser=@id) AND id NOT IN (select idUser from usersContactList where idFriend=@id)";
 
         static string requetteGetUserRequestFriendRecieved = @"select * from users as U inner join usersContactList UCL on U.id=UCL.idFriend where isFriend=0";
@@ -334,7 +334,7 @@ namespace DALListContact
             DataRowCollection rows = table.Rows;
             foreach (DataRow row in rows)
             {
-                Users u1 = GetById(Convert.ToInt32(row["idUser"]));
+                Users u1 = GetById(Convert.ToInt32(row["id"]));
                 allUsers.Add(u1);
             }
             return allUsers;

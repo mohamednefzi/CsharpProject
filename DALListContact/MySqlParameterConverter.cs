@@ -113,7 +113,7 @@ namespace DALListContact
             }
             if (events.Description != null)
             {
-                myParamsSql.Add(new SqlParameter("desc", events.Description));
+                myParamsSql.Add(new SqlParameter("description", events.Description));
             }
             if (events.Date != null)
             {

@@ -46,6 +46,7 @@ namespace ConsoleApplication1
             // List<Users> us = UsersService.getAllFriend(8);
             // List<Users> us = UsersService.getAllFriendNotConfirmed(8);
             //List<Users> us = UsersService.getAllUserNotFriends(8);
+<<<<<<< HEAD
 
             List<Users> us = UsersService.GetUserRequestFriendRecieved(22);
             foreach (Users b  in us)
@@ -54,6 +55,23 @@ namespace ConsoleApplication1
                     
             }
 
+=======
+            /*List<Users> us = UsersService.GetUserRequestFriendRecieved(8);
+            foreach (Users b  in us)
+            {
+                Console.WriteLine(b.ID + b.LastName);
+            }
+            */
+
+            //UsersService.Update(u);
+            /* List<Events> l = EventServices.getEventsByIdRelation(2, 8);
+              foreach (Events b in l)
+              {
+                  Console.WriteLine(b.ID + b.Description);
+              }*/
+            //  EventServices.ConfirmEvents(1);
+            //EventServices.DeleteEvents(5);
+>>>>>>> 678e0c55b9528f980fa9497f18aec9fd44f188ce
 
         }
     }

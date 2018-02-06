@@ -56,5 +56,10 @@ namespace essaiVue
         {
             UserManager.ConfirmNewFriend(CurrentUser.ID, friend.ID);
         }
+
+        private void add_event_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(this, "hhhh");
+        }
     }
 }

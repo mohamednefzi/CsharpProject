@@ -14,15 +14,20 @@
         <Label Name="Adress_friend" Content="Adresse" HorizontalAlignment="Left" Margin="388,133,0,0" VerticalAlignment="Top" Width="90" Height="27"/>
         <Label Content="Les événements :  " HorizontalAlignment="Left" Margin="62,223,0,0" VerticalAlignment="Top" Height="29" Width="160"/>
         <Button Name="closeFriendPage" Content="Retour au contact" HorizontalAlignment="Left" Margin="62,407,0,0" VerticalAlignment="Top" Width="140" Height="32" Click="closeFriendPage_Click"/>
-        <ListView HorizontalAlignment="Left" Height="139" Margin="62,255,0,0" VerticalAlignment="Top" Width="531">
+        <ListView x:Name="listViewFriend" HorizontalAlignment="Left" Height="136" Margin="51,252,0,0" VerticalAlignment="Top" Width="542">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridView.ColumnHeaderContextMenu>
+                        <ContextMenu/>
+                    </GridView.ColumnHeaderContextMenu>
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding id}" />
+                    <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding date}"/>
+                    <GridViewColumn Header="Description" Width="330" DisplayMemberBinding="{Binding description}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Delete evenement" HorizontalAlignment="Left" Margin="300,407,0,0" VerticalAlignment="Top" Width="101" Height="36"/>
-        <Button Content="Add Evenement" HorizontalAlignment="Left" Margin="472,407,0,0" VerticalAlignment="Top" Width="101" Height="36"/>
+        <Button Name="delete_event" Content="Delete evenement" HorizontalAlignment="Left" Margin="310,407,0,0" VerticalAlignment="Top" Width="101" Height="36"/>
+        <Button Name="add_event" Content="Add Evenement" HorizontalAlignment="Left" Margin="472,407,0,0" VerticalAlignment="Top" Width="101" Height="36" Click="add_event_Click"/>
         <Button Name="confimation_friend" Content="Confirmé" HorizontalAlignment="Left" Margin="516,97,0,0" VerticalAlignment="Top" Width="111" Height="35" Click="confimation_friend_Click"/>
 
     </Grid>

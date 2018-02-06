@@ -24,6 +24,11 @@ namespace BLLListContact
             return UsersService.VerifyUserName(login);
         }
 
+        public static Users GetUserById(int id)
+        {
+            return UsersService.GetById(id);
+        }
+
 
     }
 }

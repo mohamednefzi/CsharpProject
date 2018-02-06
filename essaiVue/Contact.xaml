@@ -7,17 +7,40 @@
         mc:Ignorable="d"
         Title="Contact" Height="600" Width="800">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Width="223" Height="195"/>
-        <Grid HorizontalAlignment="Left" Height="165" Margin="0,356,-6.4,0" VerticalAlignment="Top" Width="800">
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="165"/>
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="165" Margin="-5,0,0,0"/>
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="165" Margin="635,0,0,0"/>
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="165" Margin="475,0,0,0"/>
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="165" Margin="315,0,0,0"/>
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="165" Margin="155,0,0,0"/>
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="210" Margin="507,46,0,0" VerticalAlignment="Top" Width="183" Grid.Row="5" Grid.Column="5"/>
-
+        <Image Name="photo_user" HorizontalAlignment="Left" Height="164" Margin="30,25,0,0" VerticalAlignment="Top" Width="172"/>
+        <ListView x:Name="listViewFriend" HorizontalAlignment="Left" Height="209" Margin="10,244,0,0" VerticalAlignment="Top" Width="350">
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContextMenu>
+                        <ContextMenu/>
+                    </GridView.ColumnHeaderContextMenu>
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding ID}" />
+                    <GridViewColumn Header="Login" Width="150" DisplayMemberBinding="{Binding Login}"/>
+                    <GridViewColumn Header="Photo" Width="150" DisplayMemberBinding="{Binding MyPicture.Src}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Delete" RenderTransformOrigin="0.261,0.552" Margin="10,491,683.6,46.4"/>
+        <Button Content="Infos" RenderTransformOrigin="0.261,0.552" Margin="260,491,433.6,46.4"/>
+        <ListView x:Name="listViewAllContact" HorizontalAlignment="Left" Height="428" Margin="417,68,0,0" VerticalAlignment="Top" Width="350" >
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContextMenu>
+                        <ContextMenu/>
+                    </GridView.ColumnHeaderContextMenu>
+                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding ID}" />
+                    <GridViewColumn Header="Login" Width="150" DisplayMemberBinding="{Binding Login}"/>
+                    <GridViewColumn Header="Photo" Width="150" DisplayMemberBinding="{Binding MyPicture.Src}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox HorizontalAlignment="Left" Height="37" Margin="645,11,0,0" TextWrapping="Wrap" Text="Recherche Par nom" VerticalAlignment="Top" Width="122"/>
+        <Button Content="Not Confirmed" RenderTransformOrigin="0.261,0.552" Margin="128,491,565.6,46.4"/>
+        <Label Name="name_user" Content="Nom" HorizontalAlignment="Left" Margin="222,30,0,0" VerticalAlignment="Top" Height="30" Width="116"/>
+        <Button Content="Modifier" HorizontalAlignment="Left" Margin="222,80,0,0" VerticalAlignment="Top" Width="95" Height="35"/>
+        <Button Content="Delete User" HorizontalAlignment="Left" Margin="222,135,0,0" VerticalAlignment="Top" Width="95" Height="35"/>
+        <Button Content="User Not Friend" HorizontalAlignment="Left" Margin="417,13,0,0" VerticalAlignment="Top" Width="95" Height="35"/>
+        <Button Content="Add to Friend" HorizontalAlignment="Left" Margin="556,501,0,0" VerticalAlignment="Top" Width="95" Height="35"/>
     </Grid>
 </Window>
 

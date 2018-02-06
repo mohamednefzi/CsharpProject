@@ -1,5 +1,4 @@
-﻿using Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,26 +14,13 @@ using System.Windows.Shapes;
 namespace essaiVue
 {
     /// <summary>
-    /// Interaction logic for Contact.xaml
+    /// Interaction logic for Friend.xaml
     /// </summary>
-    public partial class Contact : Window
+    public partial class Friend : Window
     {
-        Users userConnecte;
-
-        public Contact(Users user)
+        public Friend()
         {
-            userConnecte = user;
             InitializeComponent();
-            photo_user.Source = new BitmapImage(new Uri(user.MyPicture.Src));
-
-            listViewFriend.Items.Add(user);
-            listViewFriend.Items.Add(user);
-
         }
-
-
-
-
-
     }
 }

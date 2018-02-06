@@ -1,0 +1,29 @@
+﻿<Window x:Class="essaiVue.Friend"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:essaiVue"
+        mc:Ignorable="d"
+        Title="Friend" Height="599.6" Width="800">
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="184" Margin="26,30,0,0" VerticalAlignment="Top" Width="176"/>
+        <Label Content="first name" HorizontalAlignment="Left" Margin="245,54,0,0" VerticalAlignment="Top" Width="112" Height="34"/>
+        <Label Content="last name" HorizontalAlignment="Left" Margin="245,142,0,0" VerticalAlignment="Top" Width="112" Height="34"/>
+        <Label Content="Number" HorizontalAlignment="Left" Margin="437,54,0,0" VerticalAlignment="Top" Width="112" Height="34"/>
+        <Label Content="Adresse" HorizontalAlignment="Left" Margin="437,142,0,0" VerticalAlignment="Top" Width="112" Height="34"/>
+        <Label Content="Confirmé ou non" HorizontalAlignment="Left" Margin="634,97,0,0" VerticalAlignment="Top" Width="112" Height="34"/>
+        <Label Content="Les événements :  " HorizontalAlignment="Left" Margin="26,260,0,0" VerticalAlignment="Top" Height="38" Width="202"/>
+        <Button Content="Retour au contact" HorizontalAlignment="Left" Margin="26,503,0,0" VerticalAlignment="Top" Width="176" Height="44"/>
+        <ListView HorizontalAlignment="Left" Height="183" Margin="26,303,0,0" VerticalAlignment="Top" Width="669">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Delete evenement" HorizontalAlignment="Left" Margin="326,503,0,0" VerticalAlignment="Top" Width="127" Height="48"/>
+        <Button Content="Add Evenement" HorizontalAlignment="Left" Margin="542,503,0,0" VerticalAlignment="Top" Width="127" Height="48"/>
+
+    </Grid>
+</Window>

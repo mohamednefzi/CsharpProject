@@ -13,6 +13,19 @@ namespace Entities
             MyPicture = new Picture();
             MyAddress = new Address();
         }
+
+        public Users(int iD, string lastName, string firstName, string login, string pwd, Address myAddress, Picture myPicture, List<Users> usersFriend)
+        {
+            ID = iD;
+            LastName = lastName;
+            FirstName = firstName;
+            Login = login;
+            this.pwd = pwd;
+            MyAddress = myAddress;
+            MyPicture = myPicture;
+            UsersFriend = usersFriend;
+        }
+
         public int ID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }

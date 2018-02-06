@@ -21,8 +21,15 @@ namespace essaiVue
     /// </summary>
     public partial class Register : Window
     {
+        Users users;
         public Register()
         {
+            InitializeComponent();
+        }
+
+        public Register(Users user)
+        {
+            this.users = user;
             InitializeComponent();
         }
 

@@ -43,11 +43,19 @@ namespace essaiVue
             string userLogin = user_login.Text;
             String password = user_password.Password;
 
-            Users user = UserManager.signIn(userLogin, password);
+            //attendant login de mohamed
+            //Users user = UserManager.signIn(userLogin, password);
+
+            //a fixer 
+            //Users user = UserManager.GetUserById(1);
+
+            Picture picture = new Picture();
+            picture.Src = @"E:\hatem-pc\isi\P55-c#\Ws_C#\c-sharpe\CsharpProject\essaiVue\Resources\no_photo.png";
+            Users user = new Users(1, "hatem", "chaabane", "hatem", "123465", new Address(), picture, new List<Users>());
 
             if (user != null)
             {
-                Contact contact = new Contact();
+                Contact contact = new Contact(user);
                 contact.Show();
                 this.Close();
             }

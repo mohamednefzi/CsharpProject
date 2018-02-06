@@ -47,17 +47,21 @@ namespace essaiVue
 
         private void AddUserToFriend_Click(object sender, RoutedEventArgs e)
         {
-            Users friend = (Users)listViewAllContact.SelectedItem;
-
-            UserManager.AddUserToFriend(userConnecte.ID, friend.ID);
-
-
-            List<Users> AllFriends = UserManager.GetAllFriendByUser(userConnecte.ID);
-            listViewFriend.Items.Clear();
-            foreach (Users usr in AllFriends)
+            if (listViewAllContact.SelectedItem != null)
             {
-                listViewFriend.Items.Add(usr);
+                Users friend = (Users)listViewAllContact.SelectedItem;
+
+                UserManager.AddUserToFriend(userConnecte.ID, friend.ID);
+
+                List<Users> AllFriends = UserManager.GetAllFriendByUser(userConnecte.ID);
+                listViewFriend.Items.Clear();
+                foreach (Users usr in AllFriends)
+                {
+                    listViewFriend.Items.Add(usr);
+                }
             }
+
+
 
         }
 
@@ -83,18 +87,24 @@ namespace essaiVue
 
         private void infosFriend_Click(object sender, RoutedEventArgs e)
         {
-            Users friendUsers = (Users)listViewFriend.SelectedItem;
-            Friend friendPage = new Friend(UserManager.GetUserById(friendUsers.ID), userConnecte);
-            friendPage.Show();
+            if (listViewFriend.SelectedItem != null)
+            {
+                Users friendUsers = (Users)listViewFriend.SelectedItem;
+                Friend friendPage = new Friend(UserManager.GetUserById(friendUsers.ID), userConnecte);
+                friendPage.Show();
+            }
         }
 
         private void delete_friend_Click(object sender, RoutedEventArgs e)
         {
-            Users friendUsers = (Users)listViewFriend.SelectedItem;
+            if (listViewFriend.SelectedItem != null)
+            {
+                Users friendUsers = (Users)listViewFriend.SelectedItem;
 
-            UserManager.DeleteFriend(userConnecte.ID, friendUsers.ID);
+                UserManager.DeleteFriend(userConnecte.ID, friendUsers.ID);
 
-            this.TrueFriend_Click(new object(), new RoutedEventArgs());
+                this.TrueFriend_Click(new object(), new RoutedEventArgs());
+            }
 
         }
 

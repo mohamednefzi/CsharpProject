@@ -41,6 +41,12 @@ namespace essaiVue
             else
             {
                 confimation_friend.IsEnabled = false;
+                List<Events> listeEvenement = EventsManager.GetAllFriendsEvents(CurrentUser.ID, friend.ID);
+                listVeiewEvent.Items.Clear();
+                foreach (Events evt in listeEvenement)
+                {
+                    listVeiewEvent.Items.Add(evt);
+                }
             }
         }
 
@@ -59,7 +65,32 @@ namespace essaiVue
 
         private void add_event_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(this, "hhhh");
+            int idEventGenerated = EventsManager.AddEvent(CurrentUser.ID, friend.ID, "premiere Combat");
+            EventsManager.ConfirmEvents(idEventGenerated);
+
+            List<Events> listeEvenement = EventsManager.GetAllFriendsEvents(CurrentUser.ID, friend.ID);
+            listVeiewEvent.Items.Clear();
+            foreach (Events evt in listeEvenement)
+            {
+                listVeiewEvent.Items.Add(evt);
+            }
+        }
+
+        private void delete_event_Click(object sender, RoutedEventArgs e)
+        {
+            if (listVeiewEvent.SelectedItem != null)
+            {
+                Events events = (Events)listVeiewEvent.SelectedItem;
+                EventsManager.DeleteEvents(events.ID);
+
+                List<Events> listeEvenement = EventsManager.GetAllFriendsEvents(CurrentUser.ID, friend.ID);
+                listVeiewEvent.Items.Clear();
+                foreach (Events evt in listeEvenement)
+                {
+                    listVeiewEvent.Items.Add(evt);
+                }
+
+            }
         }
     }
 }

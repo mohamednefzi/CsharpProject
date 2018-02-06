@@ -45,6 +45,7 @@ namespace essaiVue
 
             Picture picture = new Picture();
             picture.Src = photo_user.Source.ToString();
+            picture.ID = 1;
 
             Users user = new Users();
             user.FirstName = firstName;
@@ -54,7 +55,19 @@ namespace essaiVue
             user.MyAddress = addressFinal;
             user.MyPicture = picture;
 
-            UserManager.insertUser(user);
+            if (UserManager.UsernameExist(user.Login))
+            {
+                MessageBox.Show("login exsite deja ...");
+            }
+            else
+            {
+                UserManager.insertUser(user);
+                MessageBox.Show("Bien enregistré");
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+
 
 
         }

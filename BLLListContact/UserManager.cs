@@ -19,6 +19,11 @@ namespace BLLListContact
             return UsersService.SignIn(login, password);
         }
 
+        public static Boolean UsernameExist(String login)
+        {
+            return UsersService.VerifyUserName(login);
+        }
+
 
     }
 }

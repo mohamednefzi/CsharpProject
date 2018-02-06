@@ -41,7 +41,7 @@ namespace DALListContact
                 }
                 if (user.MyPicture != null)
                 {
-                    myParamsSql.Add(new SqlParameter("idAddress", user.MyPicture.ID));
+                    myParamsSql.Add(new SqlParameter("idPicture", user.MyPicture.ID));
                 }
             }
 

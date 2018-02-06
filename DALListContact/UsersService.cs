@@ -26,10 +26,10 @@ namespace DALListContact
         static string requetteSignIn = @"select * from users where personnage=@personnage and password=@password";
         static string VerifyLogin = @" select * from users where personnage=@personnage";
 
-        public static long InsertUser(Users users)
+        public static int InsertUser(Users users)
 
         {
-            long idGenerated = -1;
+            int idGenerated = -1;
             if (users != null)
             {
                 if (users.MyAddress != null)
@@ -37,6 +37,7 @@ namespace DALListContact
                     idGenerated = AddressServices.Insert(users.MyAddress);
                     if (idGenerated != -1)
                     {
+                        users.MyAddress.ID = idGenerated;
                         List<SqlParameter> paramsList = MySqlParameterConverter.ConvertFromUser(users);
                         idGenerated = Connection.Insert(requetteInsert, paramsList);
                     }
@@ -197,8 +198,8 @@ namespace DALListContact
             {
                 Users u1 = new Users();
                 u1 = EntitiesConverter.ConvertFromDataRowToUser(row);
-                u1.MyPicture = PictureService.getById(u.MyPicture.ID);
-                u1.MyAddress = AddressServices.GetById(u.MyAddress.ID);
+                u1.MyPicture = PictureService.getById(u1.MyPicture.ID);
+                u1.MyAddress = AddressServices.GetById(u1.MyAddress.ID);
                 allUsers.Add(u1);
             }
             return allUsers;

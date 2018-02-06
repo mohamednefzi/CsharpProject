@@ -211,7 +211,7 @@ namespace DALListContact
             return allUsers;
         }
 
-
+        //ok
         public static List<Users> getAllFriend(int idUser)
         {
             Users u = new Users { ID = idUser };
@@ -227,7 +227,8 @@ namespace DALListContact
             }
             return allUsers;
         }
-
+        
+        //ok
         public static List<Users> getAllFriendNotConfirmed(int idUser)
         {
             Users u = new Users { ID = idUser };
@@ -257,8 +258,8 @@ namespace DALListContact
             {
                 Users u1 = new Users();
                 u1 = EntitiesConverter.ConvertFromDataRowToUser(row);
-                u1.MyPicture = PictureService.getById(u.MyPicture.ID);
-                u1.MyAddress = AddressServices.GetById(u.MyAddress.ID);
+                u1.MyPicture = PictureService.getById(u1.MyPicture.ID);
+                u1.MyAddress = AddressServices.GetById(u1.MyAddress.ID);
                 allUsers.Add(u1);
             }
             return allUsers;

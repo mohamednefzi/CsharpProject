@@ -45,5 +45,25 @@ namespace BLLListContact
         {
             return UsersService.getAllFriend(idUser);
         }
+
+        public static List<Users> GetAllNotConfirmedFriend(int idUser)
+        {
+            return UsersService.getAllFriendNotConfirmed(idUser);
+        }
+
+        public static int DeleteFriend(int idUser, int idFriend)
+        {
+            return UsersService.DeleteFriend(idUser, idFriend);
+        }
+
+        public static int deleteUser(int idUser)
+        {
+            return UsersService.deleteUser(idUser);
+        }
+
+        public static List<Users> GetAllUserNotFriendByIdUser(int idUser)
+        {
+            return UsersService.getAllUserNotFriends(idUser);
+        }
     }
 }

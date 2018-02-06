@@ -36,6 +36,13 @@ namespace essaiVue
                 listViewAllContact.Items.Add(usr);
             }
 
+            List<Users> AllFriends = UserManager.GetAllFriendByUser(userConnecte.ID);
+
+            foreach (Users usr in AllFriends)
+            {
+                listViewFriend.Items.Add(usr);
+            }
+
         }
 
         private void AddUserToFriend_Click(object sender, RoutedEventArgs e)
@@ -46,11 +53,85 @@ namespace essaiVue
 
 
             List<Users> AllFriends = UserManager.GetAllFriendByUser(userConnecte.ID);
+            listViewFriend.Items.Clear();
             foreach (Users usr in AllFriends)
             {
                 listViewFriend.Items.Add(usr);
             }
 
+        }
+
+        private void NotConfirmedFriend_Click(object sender, RoutedEventArgs e)
+        {
+            List<Users> AllFriends = UserManager.GetAllNotConfirmedFriend(userConnecte.ID);
+            listViewFriend.Items.Clear();
+            foreach (Users usr in AllFriends)
+            {
+                listViewFriend.Items.Add(usr);
+            }
+        }
+
+        private void TrueFriend_Click(object sender, RoutedEventArgs e)
+        {
+            List<Users> AllFriends = UserManager.GetAllFriendByUser(userConnecte.ID);
+            listViewFriend.Items.Clear();
+            foreach (Users usr in AllFriends)
+            {
+                listViewFriend.Items.Add(usr);
+            }
+        }
+
+        private void infosFriend_Click(object sender, RoutedEventArgs e)
+        {
+            Users friendUsers = (Users)listViewFriend.SelectedItem;
+            Friend friendPage = new Friend(UserManager.GetUserById(friendUsers.ID));
+            friendPage.Show();
+        }
+
+        private void delete_friend_Click(object sender, RoutedEventArgs e)
+        {
+            Users friendUsers = (Users)listViewFriend.SelectedItem;
+
+            UserManager.DeleteFriend(userConnecte.ID, friendUsers.ID);
+
+            this.TrueFriend_Click(new object(), new RoutedEventArgs());
+
+        }
+
+        private void deconnexion_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void delete_contact_Click(object sender, RoutedEventArgs e)
+        {
+            UserManager.deleteUser(userConnecte.ID);
+            MessageBox.Show("Contact bien supprimé");
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void UserNotFriend_Click(object sender, RoutedEventArgs e)
+        {
+            List<Users> AllContact = UserManager.GetAllUserNotFriendByIdUser(userConnecte.ID);
+            listViewAllContact.Items.Clear();
+            foreach (Users usr in AllContact)
+            {
+                listViewAllContact.Items.Add(usr);
+            }
+        }
+
+        private void AllUser_Click(object sender, RoutedEventArgs e)
+        {
+            List<Users> AllContact = UserManager.getAllUserSaufCurrentUser(userConnecte.ID);
+            listViewAllContact.Items.Clear();
+            foreach (Users usr in AllContact)
+            {
+                listViewAllContact.Items.Add(usr);
+            }
         }
     }
 }

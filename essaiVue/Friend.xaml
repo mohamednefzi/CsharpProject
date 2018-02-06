@@ -5,25 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:essaiVue"
         mc:Ignorable="d"
-        Title="Friend" Height="599.6" Width="800">
-    <Grid>
-        <Image HorizontalAlignment="Left" Height="184" Margin="26,30,0,0" VerticalAlignment="Top" Width="176"/>
-        <Label Content="first name" HorizontalAlignment="Left" Margin="245,54,0,0" VerticalAlignment="Top" Width="112" Height="34"/>
-        <Label Content="last name" HorizontalAlignment="Left" Margin="245,142,0,0" VerticalAlignment="Top" Width="112" Height="34"/>
-        <Label Content="Number" HorizontalAlignment="Left" Margin="437,54,0,0" VerticalAlignment="Top" Width="112" Height="34"/>
-        <Label Content="Adresse" HorizontalAlignment="Left" Margin="437,142,0,0" VerticalAlignment="Top" Width="112" Height="34"/>
-        <Label Content="Confirmé ou non" HorizontalAlignment="Left" Margin="634,97,0,0" VerticalAlignment="Top" Width="112" Height="34"/>
-        <Label Content="Les événements :  " HorizontalAlignment="Left" Margin="26,260,0,0" VerticalAlignment="Top" Height="38" Width="202"/>
-        <Button Content="Retour au contact" HorizontalAlignment="Left" Margin="26,503,0,0" VerticalAlignment="Top" Width="176" Height="44"/>
-        <ListView HorizontalAlignment="Left" Height="183" Margin="26,303,0,0" VerticalAlignment="Top" Width="669">
+        Title="Friend" Height="521.6" Width="713.6">
+    <Grid Margin="0,0,17.2,1">
+        <Image Name="friend_image" HorizontalAlignment="Left" Height="138" Margin="62,49,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label Name="firstName_friend" Content="first name" HorizontalAlignment="Left" Margin="236,67,0,0" VerticalAlignment="Top" Width="88" Height="25"/>
+        <Label Name="LastName_friend" Content="last name" HorizontalAlignment="Left" Margin="236,133,0,0" VerticalAlignment="Top" Width="88" Height="27"/>
+        <Label Name="Number_friend" Content="Number" HorizontalAlignment="Left" Margin="388,67,0,0" VerticalAlignment="Top" Width="90" Height="25"/>
+        <Label Name="Adress_friend" Content="Adresse" HorizontalAlignment="Left" Margin="388,133,0,0" VerticalAlignment="Top" Width="90" Height="27"/>
+        <Label Content="Les événements :  " HorizontalAlignment="Left" Margin="62,223,0,0" VerticalAlignment="Top" Height="29" Width="160"/>
+        <Button Name="closeFriendPage" Content="Retour au contact" HorizontalAlignment="Left" Margin="62,407,0,0" VerticalAlignment="Top" Width="140" Height="32" Click="closeFriendPage_Click"/>
+        <ListView HorizontalAlignment="Left" Height="139" Margin="62,255,0,0" VerticalAlignment="Top" Width="531">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Delete evenement" HorizontalAlignment="Left" Margin="326,503,0,0" VerticalAlignment="Top" Width="127" Height="48"/>
-        <Button Content="Add Evenement" HorizontalAlignment="Left" Margin="542,503,0,0" VerticalAlignment="Top" Width="127" Height="48"/>
+        <Button Content="Delete evenement" HorizontalAlignment="Left" Margin="300,407,0,0" VerticalAlignment="Top" Width="101" Height="36"/>
+        <Button Content="Add Evenement" HorizontalAlignment="Left" Margin="472,407,0,0" VerticalAlignment="Top" Width="101" Height="36"/>
+        <Button Name="confimation_firend" Content="Confirmé" HorizontalAlignment="Left" Margin="516,97,0,0" VerticalAlignment="Top" Width="111" Height="35"/>
 
     </Grid>
 </Window>

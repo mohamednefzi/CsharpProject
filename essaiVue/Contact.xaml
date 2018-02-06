@@ -16,7 +16,17 @@
                     </GridView.ColumnHeaderContextMenu>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding ID}" />
                     <GridViewColumn Header="Login" Width="150" DisplayMemberBinding="{Binding Login}"/>
-                    <GridViewColumn Header="Photo" Width="150" DisplayMemberBinding="{Binding MyPicture.Src}"/>
+                    <!--<GridViewColumn Header="Photo" Width="150" DisplayMemberBinding="{Binding MyPicture.Src}"/>-->
+                    <GridViewColumn Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Height="40" Source="{Binding MyPicture.Src}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                        <GridViewColumnHeader Content="Photo"/>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -30,7 +40,17 @@
                     </GridView.ColumnHeaderContextMenu>
                     <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding ID}" />
                     <GridViewColumn Header="Login" Width="150" DisplayMemberBinding="{Binding Login}"/>
-                    <GridViewColumn Header="Photo" Width="150" DisplayMemberBinding="{Binding MyPicture.Src}"/>
+                    <!--<GridViewColumn Header="Photo" Width="150" DisplayMemberBinding="{Binding MyPicture.Src}"/>-->
+                    <GridViewColumn Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Height="40" Source="{Binding MyPicture.Src}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                        <GridViewColumnHeader Content="Photo"/>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

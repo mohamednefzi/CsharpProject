@@ -13,10 +13,10 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
 
-         //    Users u = new Users { FirstName = "test", LastName = "Nefzi", Login = "test", pwd = "momo", MyAddress = new Address { Number = 12, City = "city", Country = "canada", Province = "quebec", Street = "street" },MyPicture= new Picture {ID=1 } };
+            //    Users u = new Users { FirstName = "test", LastName = "Nefzi", Login = "test", pwd = "momo", MyAddress = new Address { Number = 12, City = "city", Country = "canada", Province = "quebec", Street = "street" },MyPicture= new Picture {ID=1 } };
             // Users u1 = new Users { FirstName = "hatem", LastName = "chaaben", Login = "hatem", pwd = "hatem", MyAddress = new Address { Number = 122, City = "city1", Country = "canada", Province = "quebec", Street = "street" },MyPicture= new Picture {ID=2 } };
 
-             //Users u = new Users { FirstName = "test", LastName = "Nefzi", Login = "test", pwd = "momo", MyAddress = new Address { Number = 12, City = "city", Country = "canada", Province = "quebec", Street = "street" },MyPicture= new Picture {ID=1 } };
+            //Users u = new Users { FirstName = "test", LastName = "Nefzi", Login = "test", pwd = "momo", MyAddress = new Address { Number = 12, City = "city", Country = "canada", Province = "quebec", Street = "street" },MyPicture= new Picture {ID=1 } };
             // Users u = new Users { ID=2,FirstName = "hatem", LastName = "chaaben", Login = "hatem", pwd = "chaaben", MyAddress = new Address {ID=2, Number = 12, City = "city4", Country = "canada32", Province = "quebec234", Street = "street" },MyPicture= new Picture {ID=2 } };
 
             //int a= UsersService.InsertUser(u);
@@ -37,34 +37,38 @@ namespace ConsoleApplication1
                  Console.WriteLine(b.ID + b.LastName);
              }*/
 
-       //    UsersService.ConfirmNewFriend(13, 22);
+            //    UsersService.ConfirmNewFriend(13, 22);
 
-            List<Users> us1 = UsersService.getAllFriend(22);
-           // List<Users> us = UsersService.getAllFriendNotConfirmed(8);
-          //  List<Users> us = UsersService.getAllUserNotFriends(8);
+            //List<Users> us1 = UsersService.getAllFriend(22);
+            // List<Users> us = UsersService.getAllFriendNotConfirmed(8);
+            //  List<Users> us = UsersService.getAllUserNotFriends(8);
 
             // List<Users> us = UsersService.getAllFriend(8);
-         /*    List<Users> us = UsersService.getAllFriendNotConfirmed(14);
+            /*    List<Users> us = UsersService.getAllFriendNotConfirmed(14);
 
 
-            List<Users> us = UsersService.GetUserRequestFriendRecieved(22);
-            foreach (Users b  in us)
+               List<Users> us = UsersService.GetUserRequestFriendRecieved(22);
+               foreach (Users b  in us)
+               {
+                   Console.Write(b.ID);
+
+
+               foreach (Users b  in us)
+               {
+                   Console.WriteLine(b.ID + b.LastName);
+               }
+
+
+
+               */
+
+            UsersService.deleteUser(34);
+            // UsersService.Update(u);
+            List<Events> l = EventServices.getEventsByIdRelation(22, 32);
+            foreach (Events b in l)
             {
-                Console.Write(b.ID);
-                    
-
-            foreach (Users b  in us)
-            {
-                Console.WriteLine(b.ID + b.LastName);
+                Console.WriteLine(b.ID + b.Description);
             }
-            
-            */
-           // UsersService.Update(u);
-             List<Events> l = EventServices.getEventsByIdRelation(22, 32);
-              foreach (Events b in l)
-              {
-                  Console.WriteLine(b.ID + b.Description);
-              }
             //  EventServices.ConfirmEvents(1);
             //EventServices.DeleteEvents(5);
 

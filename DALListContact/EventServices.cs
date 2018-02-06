@@ -55,7 +55,9 @@ namespace DALListContact
         internal static int DeleteByIdUser(int idUser)
         {
             int nbLignes = 0;
-            List<int> listId = UsersService.GetIdRelationByIdUser(idUser);
+            List<int> listId = new List<int>();
+            
+            listId = UsersService.GetIdRelationByIdUser(idUser);
             foreach (int item in listId)
             {
                 List<SqlParameter> list = new List<SqlParameter>();

@@ -14,7 +14,7 @@ namespace DALListContact
         static string requetteAddFriend = @"insert into usersContactList (idUser,idFriend,isFriend) output inserted.id values (@idUser,@idFriend,@isFriend)";
         static string requetteUpdateFriend = @"update usersContactList set isFriend=@isFriend where idUser=@idUser and idFriend=@idFriend";
         static string requettedeleteFriend = @"delete from usersContactList where idUser IN (@idUser,@idFriend) and idFriend IN (@idUser,@idFriend)";
-        static string requetteDeleteAllRelationUsers = @"delete from usersContactList where idUser =@idUser or idFriend=@idUser";
+        static string requetteDeleteAllRelationUsers = @"delete from usersContactList where idUser=@idUser or idFriend=@idUser";
         static string requetteGetById = @"select * from users where id=@id";
         static string requetteDeleteUser = @"delete from users where id=@id";
         static string requetteGetAllUsers = @" select * from users where id!=@id";
@@ -41,9 +41,15 @@ namespace DALListContact
                     idGenerated = AddressServices.Insert(users.MyAddress);
                     if (idGenerated != -1)
                     {
+
                         users.MyAddress.ID = idGenerated;
-                        List<SqlParameter> paramsList = MySqlParameterConverter.ConvertFromUser(users);
-                        idGenerated = Connection.Insert(requetteInsert, paramsList);
+                        int idPic = PictureService.Insert(users.MyPicture);
+                        if (idPic > 0)
+                        {
+                            users.MyPicture.ID = idPic;
+                            List<SqlParameter> paramsList = MySqlParameterConverter.ConvertFromUser(users);
+                            idGenerated = Connection.Insert(requetteInsert, paramsList);
+                        }
                     }
                 }
             }
@@ -364,7 +370,7 @@ namespace DALListContact
             DataRowCollection rows = table.Rows;
             foreach (DataRow row in rows)
             {
-                listRetour.Add( Convert.ToInt32(rows[0]["id"]));
+                listRetour.Add( Convert.ToInt32(row["id"]));
             }
             return listRetour;
         }

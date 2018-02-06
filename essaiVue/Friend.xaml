@@ -23,7 +23,7 @@
         </ListView>
         <Button Content="Delete evenement" HorizontalAlignment="Left" Margin="300,407,0,0" VerticalAlignment="Top" Width="101" Height="36"/>
         <Button Content="Add Evenement" HorizontalAlignment="Left" Margin="472,407,0,0" VerticalAlignment="Top" Width="101" Height="36"/>
-        <Button Name="confimation_firend" Content="Confirmé" HorizontalAlignment="Left" Margin="516,97,0,0" VerticalAlignment="Top" Width="111" Height="35"/>
+        <Button Name="confimation_friend" Content="Confirmé" HorizontalAlignment="Left" Margin="516,97,0,0" VerticalAlignment="Top" Width="111" Height="35" Click="confimation_friend_Click"/>
 
     </Grid>
 </Window>

@@ -44,6 +44,7 @@
         <Button Name="TrueFriend" Content="All True Friend" HorizontalAlignment="Left" Margin="10,208,0,0" VerticalAlignment="Top" Width="80" Height="31" Click="TrueFriend_Click"/>
         <Button Name="deconnexion" Content="Deconnexion" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="75" Click="deconnexion_Click"/>
         <Button Name="AllUser" Content="All User" HorizontalAlignment="Left" Margin="531,12,0,0" VerticalAlignment="Top" Width="95" Height="35" Click="AllUser_Click" />
+        <Button Name="friend_notification" Content="Notification Récu" HorizontalAlignment="Left" Margin="109,208,0,0" VerticalAlignment="Top" Width="107" Height="31" Click="friend_notification_Click"/>
     </Grid>
 </Window>
 

@@ -84,7 +84,7 @@ namespace essaiVue
         private void infosFriend_Click(object sender, RoutedEventArgs e)
         {
             Users friendUsers = (Users)listViewFriend.SelectedItem;
-            Friend friendPage = new Friend(UserManager.GetUserById(friendUsers.ID));
+            Friend friendPage = new Friend(UserManager.GetUserById(friendUsers.ID), userConnecte);
             friendPage.Show();
         }
 
@@ -132,6 +132,19 @@ namespace essaiVue
             {
                 listViewAllContact.Items.Add(usr);
             }
+        }
+
+        private void friend_notification_Click(object sender, RoutedEventArgs e)
+        {
+            List<Users> listeDesNotifications = UserManager.GetFriendNotification(userConnecte.ID);
+
+            listViewFriend.Items.Clear();
+            foreach (Users usr in listeDesNotifications)
+            {
+                listViewFriend.Items.Add(usr);
+            }
+
+
         }
     }
 }

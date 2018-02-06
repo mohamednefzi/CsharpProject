@@ -65,5 +65,16 @@ namespace BLLListContact
         {
             return UsersService.getAllUserNotFriends(idUser);
         }
+
+        public static List<Users> GetFriendNotification(int idUser)
+        {
+            return UsersService.GetUserRequestFriendRecieved(idUser);
+        }
+
+
+        public static int ConfirmNewFriend(int idUser, int idFriend)
+        {
+            return UsersService.ConfirmNewFriend(idUser, idFriend);
+        }
     }
 }

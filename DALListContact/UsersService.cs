@@ -9,8 +9,8 @@ namespace DALListContact
 {
     public class UsersService
     {
-        static string requetteInsert = @" insert into users (lastName,firstName,personnage,password,idAddress,idPicture) output inserted.id values (@firstName,@lastName,@personnage,@password,@idAddress,@idPicture)";
-        static string requetteCountFriend = @"select count(*) as count from users where 'id'=@id";
+        static string requetteInsert = @"insert into users (lastName,firstName,personnage,password,idAddress,idPicture) output inserted.id values (@firstName,@lastName,@personnage,@password,@idAddress,@idPicture)";
+        static string requetteCountFriend = @"select count(*) as count from users U inner join usersContactList UCL on U.id=UCL.idUser where U.id=@id";
         static string requetteAddFriend = @"insert into usersContactList (idUser,idFriend,isFriend) output inserted.id values (@idUser,@idFriend,@isFriend)";
         static string requetteUpdateFriend = @"update usersContactList set isFriend=@isFriend where idUser=@idUser and idFriend=@idFriend";
         static string requettedeleteFriend = @"delete from usersContactList where idUser IN (@idUser,@idFriend) and idFriend IN (@idUser,@idFriend)";
@@ -26,7 +26,7 @@ namespace DALListContact
         static string requetteSignIn = @"select * from users where personnage=@personnage and password=@password";
         static string VerifyLogin = @" select * from users where personnage=@personnage";
 
-
+        //ok
         public static int InsertUser(Users users)
         {
             int idGenerated = -1;
@@ -46,7 +46,7 @@ namespace DALListContact
             return idGenerated;
         }
 
-
+        //ok
         public static int AddFriend(int idUser, int idFriend)
         {
             int idGenerated = -1;
@@ -67,7 +67,7 @@ namespace DALListContact
             return idGenerated;
         }
 
-
+        //ok
         private static int GetCountUsersFriends(int idUser)
 
         {
@@ -81,7 +81,7 @@ namespace DALListContact
             return countFriends;
         }
 
-
+        //ok
         public static int ConfirmNewFriend(int idUser, int idFriend)
         {
             int idGenerated = -1;
@@ -91,7 +91,6 @@ namespace DALListContact
             }
             else
             {
-                idGenerated = 1;
                 AddFriend(idUser, idFriend);
                 Confirm(idUser, idFriend);
                 Confirm(idFriend, idUser);
@@ -100,7 +99,7 @@ namespace DALListContact
             return idGenerated;
         }
 
-
+        //ok
         private static int Confirm(int idUser, int idFriend)
         {
             int nbLigne = 0;
@@ -119,19 +118,19 @@ namespace DALListContact
         /// <param name="idFriend"></param>
         /// <returns>
         /// retour =0 aucune relation d'amitié
-        /// retour =1 vous avez annulé votre demande d'amis
-        /// retour =2 vous avez refusé la demande d'amis
-        /// rtour =3 relation d'amitié annulé
+        /// retour =1 cette demande d'amitié est supprimé
+        /// retour =2 vous n'etes plus amis
         /// </returns>
+        // ok
         public static int DeleteFriend(int idUser, int idFriend)
         {
-            int ligne1, ligne2;
+            int ligne1;
             ligne1 = DeleteLineFriend(idUser, idFriend);
-            ligne2 = DeleteLineFriend(idFriend, idUser);
-            return ligne1 + ligne2 * 2;
+
+            return ligne1;
         }
 
-
+        //ok
         private static int DeleteLineFriend(int idUser, int idFriend)
         {
             int nbLigne = 0;
@@ -142,20 +141,23 @@ namespace DALListContact
             return nbLigne;
         }
 
-
+        //OK
         public static int deleteUser(int idUser)
         {
             int nbLigne = 0;
             List<SqlParameter> list = new List<SqlParameter>();
+            List<SqlParameter> list1 = new List<SqlParameter>();
             list.Add(new SqlParameter("idUser", idUser));
+            list1.Add(new SqlParameter("id", idUser));
             DeleteAllRelationUsers(idUser, list);
             int idAddress = GetById(idUser).MyAddress.ID;
-            Connection.Delete(requetteDeleteUser, list);
-            AddressServices.DeleteById(idAddress);
+            Connection.Delete(requetteDeleteUser, list1);
+            if (idAddress > 0)
+                AddressServices.DeleteById(idAddress);
             return nbLigne;
         }
 
-
+        //ok
         private static int DeleteAllRelationUsers(int idUser, List<SqlParameter> list)
         {
             int nbLigne = 0;
@@ -164,7 +166,7 @@ namespace DALListContact
 
         }
 
-
+        //ok
         public static Users GetById(int idUser)
         {
             Users u = new Users { ID = idUser };
@@ -185,7 +187,7 @@ namespace DALListContact
             return u;
         }
 
-
+        //ok
         public static List<Users> getAll(int idUser)
         {
             List<Users> allUsers = new List<Users>();
@@ -275,7 +277,7 @@ namespace DALListContact
             return id;
         }
 
-
+        //ok
         public static Users SignIn(string login, string pwd)
         {
             Users u = new Users { Login = login, pwd = pwd };
@@ -296,7 +298,7 @@ namespace DALListContact
             return u;
         }
 
-
+        //ok
         public static bool VerifyUserName(string login)
         {
             bool exist = false;
@@ -305,7 +307,8 @@ namespace DALListContact
             DataSet data = Connection.selectQuery(VerifyLogin, list);
             DataTable table = data.Tables[0];
             DataRowCollection rows = table.Rows;
-            if (rows.Count==1)
+            int a = rows.Count;
+            if (rows.Count == 1)
             {
                 exist = true;
 

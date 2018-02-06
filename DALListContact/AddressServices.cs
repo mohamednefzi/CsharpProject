@@ -12,8 +12,9 @@ namespace DALListContact
     {
         static private string requetteInsert = @"insert into adress (number,street,city,province,country) output inserted.id values (@number,@street,@city,@province,@country)";
         private static string requetteDelete = @"delete from adress where id =@id";
-        private static string requetteGetById = @"select from adress where id=@id";
-
+        private static string requetteGetById = @"select * from adress where id=@id";
+        
+        //ok
         internal static int Insert(Address address)
         {
             int idGenerated = -1;
@@ -24,7 +25,7 @@ namespace DALListContact
             }
             return idGenerated;
         }
-
+        //ok
         internal static int DeleteById(int IdAddress)
         {
             int nbLigne = 0;
@@ -33,11 +34,12 @@ namespace DALListContact
             nbLigne = Connection.Delete(requetteDelete, list);
             return nbLigne;
         }
-
+        //ok
         internal static Address GetById(int id)
         {
             Address adr = new Address { ID = id };
             List<SqlParameter> list = new List<SqlParameter>();
+            list = MySqlParameterConverter.ConvertFromAdress(adr);
             DataSet data = Connection.selectQuery(requetteGetById, list);
             DataTable table = data.Tables[0];
             DataRowCollection rows = table.Rows;

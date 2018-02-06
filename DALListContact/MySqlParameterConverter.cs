@@ -36,10 +36,10 @@ namespace DALListContact
                 {
                     myParamsSql.Add(new SqlParameter("password", user.pwd));
                 }
-                if (user.MyAddress != null) {
+                if (user.MyAddress != null && user.MyAddress.ID !=0) {
                     myParamsSql.Add(new SqlParameter("idAddress", user.MyAddress.ID));
                 }
-                if (user.MyPicture != null)
+                if (user.MyPicture != null && user.MyPicture.ID != 0)
                 {
                     myParamsSql.Add(new SqlParameter("idPicture", user.MyPicture.ID));
                 }

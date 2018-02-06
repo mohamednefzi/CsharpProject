@@ -35,11 +35,7 @@ namespace DALConnection
                     {
                         cmd.Parameters.Add(param);
                     }
-<<<<<<< HEAD
-                   idGenerated = Convert.ToInt32(cmd.ExecuteScalar());
-=======
                     idGenerated = Convert.ToInt32( cmd.ExecuteScalar());
->>>>>>> 0bb4f2d5812fef20ad1eb7ecc94d402544f6c9f7
                     Console.WriteLine("auto-incremented id: {0}", idGenerated);
                 }
             }

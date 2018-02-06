@@ -28,13 +28,13 @@ namespace ConsoleApplication1
              List<Users> us = UsersService.getAllFriendNotConfirmed(8);
             //List<Users> us = UsersService.getAllUserNotFriends(8);
             //List<Users> us = UsersService.GetUserRequestFriendRecieved(8);
-            foreach (Users b  in us)
-            {
-                Console.WriteLine(b.ID + b.LastName);
-            }
-            
+            /*   foreach (Users b  in us)
+               {
+                   Console.WriteLine(b.ID + b.LastName);
+               }*/
 
-           // UsersService.Update(u);
+
+            // UsersService.Update(u);
             /* List<Events> l = EventServices.getEventsByIdRelation(2, 8);
               foreach (Events b in l)
               {
@@ -42,7 +42,7 @@ namespace ConsoleApplication1
               }*/
             //  EventServices.ConfirmEvents(1);
             //EventServices.DeleteEvents(5);
-
+            UsersService.DeleteFriend(14, 8);
         }
     }
 }

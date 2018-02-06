@@ -12,8 +12,8 @@ namespace DALListContact
 {
    public class EventServices
     {
-        static string requetteGetEventByIdRelation = @"select * from events where idReltion=@idRelation";
-        static string requetteConfirmEvents = @"update events set isConfirmed=true where id=@id";
+        static string requetteGetEventByIdRelation = @"select * from events where idRelation=@idRelation";
+        static string requetteConfirmEvents = @"update events set isConfirmed=1 where id=@id";
         static string requetteDeleteEvents = @"delete from events where id=@id";
         static string requetteInsertEvents = @"insert into events (description,idRelation,date) output inserted.id values(@description,@idRelation,@date)";
 
@@ -21,7 +21,7 @@ namespace DALListContact
         {
             List<Events> eventsList = new List<Events>();
             int id = UsersService.GetIdRelation(idUser, idFriend);
-            List<SqlParameter> list = MySqlParameterConverter.ConvertFromEvents(new Events { IdRelation = id });
+            List<SqlParameter> list = MySqlParameterConverter.ConvertFromEvents(new Events { IdRelation = id,Date=DateTime.Now });
             DataSet data = Connection.selectQuery(requetteGetEventByIdRelation, list);
             DataTable table = data.Tables[0];
             DataRowCollection rows = table.Rows;

@@ -9,10 +9,21 @@ namespace BLLListContact
 {
     public class UserManager
     {
-        public static int insertUser(Users user)
+        public static long insertUser(Users user)
         {
             return UsersService.InsertUser(user);
         }
+
+        public static Users signIn(string login, string password)
+        {
+            return UsersService.SignIn(login, password);
+        }
+
+        public static Boolean UsernameExist(String login)
+        {
+            return UsersService.VerifyUserName(login);
+        }
+
 
     }
 }

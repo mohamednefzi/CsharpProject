@@ -26,8 +26,12 @@ namespace DALListContact
         static string requetteSignIn = @"select * from users where personnage=@personnage and password=@password";
         static string VerifyLogin = @" select * from users where personnage=@personnage";
 
+<<<<<<< HEAD
         //ok
+=======
+>>>>>>> 0bb4f2d5812fef20ad1eb7ecc94d402544f6c9f7
         public static int InsertUser(Users users)
+
         {
             int idGenerated = -1;
             if (users != null)
@@ -46,10 +50,15 @@ namespace DALListContact
             return idGenerated;
         }
 
+<<<<<<< HEAD
         //ok
         public static int AddFriend(int idUser, int idFriend)
+=======
+
+        public static long AddFriend(int idUser, int idFriend)
+>>>>>>> 0bb4f2d5812fef20ad1eb7ecc94d402544f6c9f7
         {
-            int idGenerated = -1;
+            long idGenerated = -1;
 
             if (GetCountUsersFriends(idUser) >= 5)
             {

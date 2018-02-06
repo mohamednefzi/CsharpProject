@@ -14,6 +14,7 @@ namespace DALListContact
     {
 
         private static string requetteGetById=@"select * from pictures where id=@id";
+
         internal static Picture getById(int id) {
             Picture p = new Picture { ID = id };
             List<SqlParameter> list = MySqlParameterConverter.ConvertFrompicture(p);

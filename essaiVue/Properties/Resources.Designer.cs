@@ -78,5 +78,15 @@ namespace essaiVue.Properties {
                 return ResourceManager.GetString("image", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap no_photo {
+            get {
+                object obj = ResourceManager.GetObject("no_photo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

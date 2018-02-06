@@ -25,7 +25,7 @@ namespace ConsoleApplication1
             //Console.WriteLine(u);
             //List<Users> us = UsersService.getAll(2);
             // List<Users> us = UsersService.getAllFriend(8);
-             List<Users> us = UsersService.getAllFriendNotConfirmed(14);
+             List<Users> us = UsersService.getAllFriendNotConfirmed(8);
             //List<Users> us = UsersService.getAllUserNotFriends(8);
             //List<Users> us = UsersService.GetUserRequestFriendRecieved(8);
             foreach (Users b  in us)

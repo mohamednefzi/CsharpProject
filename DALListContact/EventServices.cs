@@ -10,12 +10,12 @@ using System.Data;
 
 namespace DALListContact
 {
-    class EventServices
+   public class EventServices
     {
         static string requetteGetEventByIdRelation = @"select * from events where idReltion=@idRelation";
         static string requetteConfirmEvents = @"update events set isConfirmed=true where id=@id";
         static string requetteDeleteEvents = @"delete from events where id=@id";
-
+        static string requetteInsertEvents = @"insert into events (description,idRelation) output inserted.id values(@description,@idRelation)";
         public static List<Events> getEventsByIdRelation(int idUser, int idFriend)
         {
             List<Events> eventsList = new List<Events>();
@@ -45,10 +45,22 @@ namespace DALListContact
             int nbLignes = -1;
             List<SqlParameter> list = new List<SqlParameter>();
             list.Add(new SqlParameter("id", idEvents));
-            nbLignes = Connection.Delete(requetteConfirmEvents, list);
+            nbLignes = Connection.Delete(requetteDeleteEvents, list);
             return nbLignes;
         }
         
-
+        public static int Insert(int idUser,int idFriend,string desc)
+        {
+            int idGenerated = -1;
+            int id=UsersService.GetIdRelation(idUser, idFriend);
+            if (id > 0)
+            {
+                Events e = new Events { IdRelation = id, Description = desc };
+                List<SqlParameter> list = new List<SqlParameter>();
+                list = MySqlParameterConverter.ConvertFromEvents(e);
+                idGenerated= Connection.Insert(requetteInsertEvents, list);
+            }
+            return idGenerated;
+        }
     }
 }

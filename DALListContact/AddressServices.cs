@@ -13,7 +13,7 @@ namespace DALListContact
         static private string requetteInsert = @"insert into adress (number,street,city,province,country) output inserted.id values (@number,@street,@city,@province,@country)";
         private static string requetteDelete = @"delete from adress where id =@id";
         private static string requetteGetById = @"select * from adress where id=@id";
-        
+        private static string updateAddress = @"update adress set number=@number,street=@street,city=@city,province=@province,country=@country where id=@id";
         //ok
         internal static int Insert(Address address)
         {
@@ -50,6 +50,14 @@ namespace DALListContact
                 adr = null;
             }
             return adr;
+        }
+
+        internal static int Update(Address adr)
+        {
+            int nbLigne = -1;
+            List<SqlParameter> list = MySqlParameterConverter.ConvertFromAdress(adr);
+            nbLigne = Connection.Update(updateAddress, list);
+            return nbLigne;
         }
     }
 }

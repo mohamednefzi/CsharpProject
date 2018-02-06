@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using BLLListContact;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,15 +27,30 @@ namespace essaiVue
             userConnecte = user;
             InitializeComponent();
             photo_user.Source = new BitmapImage(new Uri(user.MyPicture.Src));
+            name_user.Content = user.FirstName;
 
-            listViewFriend.Items.Add(user);
-            listViewFriend.Items.Add(user);
+            List<Users> AllContact = UserManager.getAllUserSaufCurrentUser(userConnecte.ID);
+
+            foreach (Users usr in AllContact)
+            {
+                listViewAllContact.Items.Add(usr);
+            }
 
         }
 
+        private void AddUserToFriend_Click(object sender, RoutedEventArgs e)
+        {
+            Users friend = (Users)listViewAllContact.SelectedItem;
+
+            UserManager.AddUserToFriend(userConnecte.ID, friend.ID);
 
 
+            List<Users> AllFriends = UserManager.GetAllFriendByUser(userConnecte.ID);
+            foreach (Users usr in AllFriends)
+            {
+                listViewFriend.Items.Add(usr);
+            }
 
-
+        }
     }
 }

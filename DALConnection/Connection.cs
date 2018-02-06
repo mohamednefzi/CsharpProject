@@ -10,7 +10,7 @@ namespace DALConnection
 {
    public  class Connection
     {
-         private static string connStr = @"Data Source=VIEWW7-2016-60\SQLEXPRESS;
+         private static string connStr = @"Data Source=HATEM\SQLEXPRESS;
                                                 Initial Catalog=listeDeContact;
                                                 Integrated Security=True;
                                                 Connect Timeout=5";

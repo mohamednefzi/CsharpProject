@@ -30,5 +30,20 @@ namespace BLLListContact
         }
 
 
+        public static List<Users> getAllUserSaufCurrentUser(int idUser)
+        {
+            return UsersService.getAll(idUser);
+        }
+
+
+        public static int AddUserToFriend(int idUser, int idFriend)
+        {
+            return UsersService.AddFriend(idUser, idFriend);
+        }
+
+        public static List<Users> GetAllFriendByUser(int idUser)
+        {
+            return UsersService.getAllFriend(idUser);
+        }
     }
 }

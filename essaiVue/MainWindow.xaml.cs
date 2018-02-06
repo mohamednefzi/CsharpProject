@@ -44,14 +44,14 @@ namespace essaiVue
             String password = user_password.Password;
 
             //attendant login de mohamed
-            //Users user = UserManager.signIn(userLogin, password);
+            Users user = UserManager.signIn(userLogin, password);
 
             //a fixer 
             //Users user = UserManager.GetUserById(1);
 
-            Picture picture = new Picture();
-            picture.Src = @"E:\hatem-pc\isi\P55-c#\Ws_C#\c-sharpe\CsharpProject\essaiVue\Resources\no_photo.png";
-            Users user = new Users(1, "hatem", "chaabane", "hatem", "123465", new Address(), picture, new List<Users>());
+            //Picture picture = new Picture();
+            //picture.Src = @"E:\hatem-pc\isi\P55-c#\Ws_C#\c-sharpe\CsharpProject\essaiVue\Resources\no_photo.png";
+            //Users user = new Users(1, "hatem", "chaabane", "hatem", "123465", new Address(), picture, new List<Users>());
 
             if (user != null)
             {

@@ -18,11 +18,11 @@ namespace DALListContact
         static string requetteGetById = @"select * from users where id=@id";
         static string requetteDeleteUser = @"delete from users where id=@id";
         static string requetteGetAllUsers = @" select * from users where id!=@id";
-        static string requetteGetAllFriend = @"select * from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=true";
-        static string requetteGetAllFriendNotConfirmed = @"select * from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=false";
+        static string requetteGetAllFriend = @"select * from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=1";
+        static string requetteGetAllFriendNotConfirmed = @"select * from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=0";
         static string requetteGetUsersNotFriend = @"select * from users where id NOT IN (select idFriend from usersContactList where idUser=@id) AND id NOT IN (select idUser from usersContactList where idFriend=@id)";
         static string requetteGetUserRequestFriendRecieved = @"select * from users where id IN (select idFriend from usersContactList where idFriend=@id and isFriend=false)";
-        static string requetteGetIdRelation = @"select * from usersContactList where idUser=@idUser AND idFriend=@idFriend and isFriend=true";
+        static string requetteGetIdRelation = @"select * from usersContactList where idUser=@idUser AND idFriend=@idFriend and isFriend=1";
         static string requetteSignIn = @"select * from users where personnage=@personnage and password=@password";
         static string VerifyLogin = @" select * from users where personnage=@personnage";
 
@@ -289,7 +289,7 @@ namespace DALListContact
             DataSet data = Connection.selectQuery(requetteSignIn, list);
             DataTable table = data.Tables[0];
             DataRowCollection rows = table.Rows;
-            if (rows != null)
+            if (rows.Count==1)
             {
                 u = GetById(Convert.ToInt32(rows[0]["id"]));
             }

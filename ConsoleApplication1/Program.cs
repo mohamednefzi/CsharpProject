@@ -24,12 +24,14 @@ namespace ConsoleApplication1
             //  int u = UsersService.deleteUser(13);
             //Console.WriteLine(u);
             //List<Users> us = UsersService.getAll(2);
-            List<Users> us = UsersService.getAllFriend(8);
-            
-            foreach(Users b  in us)
-            {
-                Console.WriteLine(b.ID + b.LastName);
-            }
+            /* List<Users> us = UsersService.getAllFriend(8);
+
+             foreach(Users b  in us)
+             {
+                 Console.WriteLine(b.ID + b.LastName);
+             }*/
+
+            UsersService.ConfirmNewFriend(20, 22);
         }
     }
 }

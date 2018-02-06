@@ -22,11 +22,11 @@ namespace DALListContact
         static string requetteGetAllFriendNotConfirmed = @"select U.id as id from  users as U inner join usersContactList as UCL on U.id=UCL.idUser where U.id=@id AND UCL.isFriend=0";
         static string requetteGetUsersNotFriend = @"select * from users where id NOT IN (select idFriend from usersContactList where idUser=@id) AND id NOT IN (select idUser from usersContactList where idFriend=@id)";
 
-        static string requetteGetUserRequestFriendRecieved = @"select * from users as U inner join usersContactList UCL on U.id=UCL.idFriend where isFriend=0";
+        static string requetteGetUserRequestFriendRecieved = @"select * from users as U inner join usersContactList UCL on U.id=UCL.idFriend where UCL.isFriend=0  AND U.id=@id";
 
         static string requetteGetIdRelation = @"select * from usersContactList where idUser=@idUser AND idFriend=@idFriend and isFriend=1";
         static string requetteSignIn = @"select * from users where personnage=@personnage and password=@password";
-        static string VerifyLogin = @" select * from users where personnage=@personnage";
+        static string VerifyLogin = @"select * from users where personnage=@personnage";
         static string UpdateUser = @"update users set password=@password where id=@id";
 
         //ok
@@ -334,7 +334,7 @@ namespace DALListContact
             DataRowCollection rows = table.Rows;
             foreach (DataRow row in rows)
             {
-                Users u1 = GetById(Convert.ToInt32(row["id"]));
+                Users u1 = GetById(Convert.ToInt32(row["idUser"]));
                 allUsers.Add(u1);
             }
             return allUsers;
